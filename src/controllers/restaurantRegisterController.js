@@ -6,10 +6,10 @@ export const registerRestaurant = async (req, res) => {
 
     try {
         const savedRestaurant = await restaurant.save();
-        res.status(201).send(savedRestaurant);
+        const token = await savedRestaurant.generateAuthToken()
+        res.status(201).send({savedRestaurant, token});
     }
     catch (e) {
-        //console.log(e);
         res.status(400).send({
             error: 'Error Occurred'
         });
