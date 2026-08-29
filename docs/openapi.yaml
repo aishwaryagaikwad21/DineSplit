@@ -10,7 +10,7 @@ servers:
 
 paths:
 
-  /api/restaurants/register:
+  /restaurants/register:
     post:
       summary: Register a restaurant
       description: creates a new restaurant account.

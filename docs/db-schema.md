@@ -31,12 +31,10 @@
     - type: Map, 
     - of: String
     - Required: false
-- menu_file
+- token
     - type: String
-    - Required: true
-    - Unique: false
-    - Validation: valid file path, json
-    - Reference/File: Reference to uploaded JSON menu --> instance method to upload a file
+    - unique: true
+    - Reference/File: Token used for restaurant authentication
 
 ## 2. Menu
 ### Fields
