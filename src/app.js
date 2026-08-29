@@ -1,12 +1,11 @@
+//responsible for Express configuration
 import express from 'express'
+import restaurantRouter  from './routes/restaurantRouter.js'
 
 const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('hello')
-})
+app.use(express.json())
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`)
-})
+app.use(restaurantRouter)
+
+export default app; 

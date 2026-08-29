@@ -2,11 +2,11 @@
   "name": "dinesplit",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/app.js",
-    "dev": "nodemon --watch src/app.js"
+    "start": "nodemon src/server.js",
+    "dev": "nodemon --watch src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/aishwaryagaikwad21/DineSplit#readme",
   "dependencies": {
+    "argon2": "^0.45.1",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.9.4",
     "nodemon": "^3.1.14",
