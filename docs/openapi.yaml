@@ -58,9 +58,6 @@ paths:
 
         "400":
           description: Invalid registration data
-
-        "409":
-          description: Restaurant with this email already exists
         
         "500":
           description: Internal server error

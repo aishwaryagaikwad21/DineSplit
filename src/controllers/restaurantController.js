@@ -1,5 +1,6 @@
 import { Restaurant } from '../models/restaurant.js'
-
+import Menu from '../models/menu.js';
+import menuSchema from '../validators/menuValidator.js';
 
 export const registerRestaurant = async (req, res) => {
 
@@ -22,7 +23,7 @@ export const getRestaurant = async (req, res) => {
         res.send(req.restaurant)
     }
     catch(e){
-        res.status(500).send(e)
+        res.status(400).send(e)
     }
 }
 
@@ -34,5 +35,46 @@ export const loginRestaurant = async (req, res) => {
     }
     catch(err){
         res.status(401).send(err)
+    }
+}
+
+export const uploadMenu = async (req, res) => {
+     try {
+
+        // Convert uploaded Buffer → string
+        const fileContent = req.file.buffer.toString('utf-8')
+
+        // Convert JSON string → JavaScript object
+        const menu = JSON.parse(fileContent)
+
+        // Validate menu
+        const result = menuSchema.safeParse(menu)
+
+        if (!result.success) {
+            return res.status(400).send({
+                message: 'Invalid menu format',
+                errors: result.error.issues
+            })
+        }
+
+        // Store the ORIGINAL file in MongoDB
+        const menuFile = new Menu({
+            restaurantId: req.restaurant._id,
+            filename: req.file.originalname,
+            content: req.file.buffer,
+            contentType: req.file.mimetype
+        })
+
+        await menuFile.save()
+
+        res.status(201).send({
+            message: 'Menu uploaded successfully'
+        })
+
+    } catch (err) {
+
+        res.status(400).send({
+            message: err.message
+        })
     }
 }
