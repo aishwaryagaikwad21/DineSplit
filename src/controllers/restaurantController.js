@@ -1,6 +1,7 @@
 import { Restaurant } from '../models/restaurant.js'
 import Menu from '../models/menu.js';
 import menuSchema from '../validators/menuValidator.js';
+import { Bill } from '../models/bill.js';
 
 export const registerRestaurant = async (req, res) => {
 
@@ -93,5 +94,22 @@ export const getMenu = async (req, res) => {
     }
     catch(e){
         res.status(400).send({error: e})
+    }
+}
+
+export const finalBill = async (req, res) => {
+    try{
+        const billDetails = new Bill({
+            restaurantId: req.restaurant._id,
+            tableNumber: req.body.tableNumber,
+            dishes: req.body.dishes
+        })
+        
+        await billDetails.save()
+        res.status(200).send(billDetails)
+    }
+    catch(err){
+        console.log(err);
+        res.status(400).send(err)
     }
 }

@@ -1,7 +1,7 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
 import upload from '../middleware/upload.js';
-import { registerRestaurant, getRestaurant, loginRestaurant, uploadMenu, getMenu } from '../controllers/restaurantController.js';
+import { registerRestaurant, getRestaurant, loginRestaurant, uploadMenu, getMenu, finalBill } from '../controllers/restaurantController.js';
 
 
 
@@ -12,6 +12,7 @@ router.post('/restaurants/login', loginRestaurant)
 router.get('/restaurant/profile', auth, getRestaurant)
 router.post('/restaurant/menu', auth, upload.single('menu'), uploadMenu)
 router.get('/restaurant/menu', auth, getMenu)
+router.post('/restaurant/bill', auth, finalBill)
 
 export default router
 
