@@ -78,3 +78,20 @@ export const uploadMenu = async (req, res) => {
         })
     }
 }
+
+export const getMenu = async (req, res) => {
+    try{
+        const file = await Menu.findFileByRestaurantId(req.restaurant._id)
+
+        if(!file){
+           return res.status(404).send('File not Found')
+        }
+
+        const menu = JSON.parse(file.content.toString('utf-8'))
+
+        res.status(200).send(menu)
+    }
+    catch(e){
+        res.status(400).send({error: e})
+    }
+}

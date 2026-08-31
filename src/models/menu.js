@@ -23,6 +23,17 @@ const menuSchema = new mongoose.Schema({
     }
 })
 
+
+menuSchema.statics.findFileByRestaurantId = async (id) => {
+    const file = await Menu.findOne({restaurantId: id})
+
+    if(!file){
+        throw new Error('File not found')
+    }
+
+    return file
+}
+
 const Menu = mongoose.model('Menu', menuSchema)
 
 export default Menu
