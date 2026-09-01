@@ -1,83 +1,40 @@
-import { Split } from "../models/split.js";
+import { calculateEqualSplit } from "./split/equalSplit.js";
+import { calculateItemWiseSplit } from "./split/itemWiseSplit.js";
+import { createSplit } from "./split/createSplit.js";
 
-export const splitBill = async({
+export const splitBill = async ({
     bill,
     splitType,
     totalMembers,
     memNames,
     dishDetails
 }) => {
-    //console.log(bill, splitType, totalMembers, memNames, dishDetails)
-    if(splitType === 'equal'){
-        const baseAmount = Math.floor(bill.grandTotal / totalMembers);
-        const remainder = bill.grandTotal % totalMembers
 
-        const result = memNames.map((mem, index) => {
-            return {
-                name: mem,
-                amountOwed: baseAmount + (index < remainder ? 1 : 0)
-            }
-        })
+    let members;
 
-        //console.log(result);
-
-        const splitBillDetails = new Split({
-            billId: bill._id,
-            restaurantId: bill.restaurantId,
+    if (splitType === "equal") {
+        members = calculateEqualSplit(
+            bill,
             totalMembers,
-            splitType,
-            members: result,
-            totalAmount: bill.grandTotal
-        })
-        await splitBillDetails.save();
-        return splitBillDetails
-        
+            memNames
+        );
     }
 
-    ////console.log(bill, splitType, totalMembers, memNames, dishDetails)
-    if(splitType === 'item-wise'){
-        
-        const members = {}
-        memNames.forEach((name) => { //initialise members
-            members[name] = {
-                name,
-                amountOwed: 0,
-                items: []
-            }
-        })
-
-        bill.dishes.forEach((billDish) => {
-            const getDishDetails = dishDetails.find((dish) => billDish.menu_id === dish.menu_id)
-            
-            const people = getDishDetails.who_ordered
-
-            const amountPerPerson =  Number((billDish.itemTotal / people.length).toFixed(2))
-
-            people.forEach((name) => {
-                members[name].amountOwed = Number((members[name].amountOwed + amountPerPerson).toFixed(2));
-
-                members[name].items.push({
-                    menu_id: billDish.menu_id,
-                    dishname: billDish.dishName,
-                    amount: amountPerPerson
-                })
-            })
-        })
-
-        const result = Object.values(members);
-
-         const splitBillDetails = new Split({
-            billId: bill._id,
-            restaurantId: bill.restaurantId,
-            totalMembers,
-            splitType,
-            members: result,
-            totalAmount: bill.grandTotal
-        })
-        await splitBillDetails.save();
-        return splitBillDetails
+    if (splitType === "item-wise") {
+        members = calculateItemWiseSplit(
+            bill,
+            memNames,
+            dishDetails
+        );
     }
-}
+
+    return await createSplit({
+        bill,
+        splitType,
+        totalMembers,
+        members
+    });
+};
 
 /* 
 {
