@@ -67,4 +67,15 @@ billSchema.pre('validate', function(next){
     bill.grandTotal = bill.subtotal + bill.tax
 })
 
+billSchema.statics.searchBill = async (bill_id, restaurant_id) => {
+    const bill = await Bill.findOne({
+        _id: bill_id,
+        restaurantId: restaurant_id
+    })
+    if(!bill){
+        throw new Error('Bill Not Found')
+    }
+    return bill
+}
+
 export const Bill = mongoose.model('Bill',billSchema)
