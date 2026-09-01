@@ -19,7 +19,7 @@ export const splitBill = async({
             }
         })
 
-        console.log(result);
+        //console.log(result);
 
         const splitBillDetails = new Split({
             billId: bill._id,
@@ -32,6 +32,50 @@ export const splitBill = async({
         await splitBillDetails.save();
         return splitBillDetails
         
+    }
+
+    ////console.log(bill, splitType, totalMembers, memNames, dishDetails)
+    if(splitType === 'item-wise'){
+        
+        const members = {}
+        memNames.forEach((name) => { //initialise members
+            members[name] = {
+                name,
+                amountOwed: 0,
+                items: []
+            }
+        })
+
+        bill.dishes.forEach((billDish) => {
+            const getDishDetails = dishDetails.find((dish) => billDish.menu_id === dish.menu_id)
+            
+            const people = getDishDetails.who_ordered
+
+            const amountPerPerson =  Number((billDish.itemTotal / people.length).toFixed(2))
+
+            people.forEach((name) => {
+                members[name].amountOwed = Number((members[name].amountOwed + amountPerPerson).toFixed(2));
+
+                members[name].items.push({
+                    menu_id: billDish.menu_id,
+                    dishname: billDish.dishName,
+                    amount: amountPerPerson
+                })
+            })
+        })
+
+        const result = Object.values(members);
+
+         const splitBillDetails = new Split({
+            billId: bill._id,
+            restaurantId: bill.restaurantId,
+            totalMembers,
+            splitType,
+            members: result,
+            totalAmount: bill.grandTotal
+        })
+        await splitBillDetails.save();
+        return splitBillDetails
     }
 }
 

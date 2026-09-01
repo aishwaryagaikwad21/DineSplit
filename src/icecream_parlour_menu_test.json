@@ -1,0 +1,77 @@
+[
+  {
+    "menu_id": "IC001",
+    "dishname": "Vanilla Bean",
+    "price": 120
+  },
+  {
+    "menu_id": "IC002",
+    "dishname": "Chocolate Fudge",
+    "price": 140
+  },
+  {
+    "menu_id": "IC003",
+    "dishname": "Strawberry Swirl",
+    "price": 130
+  },
+  {
+    "menu_id": "IC004",
+    "dishname": "Mango Alphonso",
+    "price": 150
+  },
+  {
+    "menu_id": "IC005",
+    "dishname": "Butterscotch Crunch",
+    "price": 140
+  },
+  {
+    "menu_id": "IC006",
+    "dishname": "Cookies and Cream",
+    "price": 150
+  },
+  {
+    "menu_id": "IC007",
+    "dishname": "Pistachio",
+    "price": 160
+  },
+  {
+    "menu_id": "IC008",
+    "dishname": "Coffee Mocha",
+    "price": 150
+  },
+  {
+    "menu_id": "IC009",
+    "dishname": "Black Currant",
+    "price": 130
+  },
+  {
+    "menu_id": "IC010",
+    "dishname": "Tender Coconut",
+    "price": 140
+  },
+  {
+    "menu_id": "IC011",
+    "dishname": "Kesar Pista",
+    "price": 160
+  },
+  {
+    "menu_id": "IC012",
+    "dishname": "Belgian Chocolate",
+    "price": 170
+  },
+  {
+    "menu_id": "IC013",
+    "dishname": "Mint Chocolate Chip",
+    "price": 150
+  },
+  {
+    "menu_id": "IC014",
+    "dishname": "Caramel Sea Salt",
+    "price": 170
+  },
+  {
+    "menu_id": "IC015",
+    "dishname": "Raspberry Cheesecake",
+    "price": 180
+  }
+]
