@@ -4,7 +4,8 @@ import upload from '../middleware/upload.js';
 import { 
     registerRestaurant, 
     getRestaurant, 
-    updateRestaurant, 
+    updateRestaurant,
+    deleteRestaurant, 
     loginRestaurant, 
     uploadMenu, 
     getMenu, 
@@ -20,6 +21,7 @@ router.post('/restaurants/register', registerRestaurant)
 router.post('/restaurants/login', loginRestaurant)
 router.get('/restaurant/profile', auth, getRestaurant)
 router.patch('/restaurant/profile', auth, updateRestaurant)
+router.delete('/restaurant/profile', auth, deleteRestaurant)
 router.post('/restaurant/menu', auth, upload.single('menu'), uploadMenu)
 router.get('/restaurant/menu', auth, getMenu)
 router.put('/restaurant/menu', auth, upload.single('menu'), replaceMenu)

@@ -62,6 +62,16 @@ export const updateRestaurant = async (req, res) => {
     }
 }
 
+export const deleteRestaurant = async (req, res) => {
+    try{
+        await req.restaurant.deleteOne()
+        res.status(200).send(req.restaurant)
+    }
+    catch(err){
+        res.status(500).send(err)
+    }
+}
+
 export const loginRestaurant = async (req, res) => {
     try{
         const restaurant = await Restaurant.findByCredentials(req.body.email, req.body.password)
