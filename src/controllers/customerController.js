@@ -1,7 +1,8 @@
 import { Bill } from '../models/bill.js';
 import { splitBill } from '../services/splitBill.js';
+import { Split } from '../models/split.js'
 
-export const findBill = async (req, res) => {
+export const findFinalBill = async (req, res) => {
     try{
         const {bill_id, restaurant_id} = req.params
         
@@ -49,4 +50,23 @@ export const billDetails = async (req, res) => {
     catch(err){
         res.status(400).send(err)
     }
+}
+
+export const getSplitBill = async (req, res) => {
+
+    try{
+        const {billId, restaurantId} = req.params
+
+        const bill = await Split.findOne({billId, restaurantId})
+
+        if(!bill){
+           return res.status(404).send('Not Found')
+        }
+
+        res.status(200).send(bill)
+    }
+    catch(e){
+        res.status(400).send(e)
+    }
+
 }
