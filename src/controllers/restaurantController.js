@@ -203,3 +203,15 @@ export const finalBill = async (req, res) => {
         res.status(400).send(err)
     }
 }
+
+export const cancelBill = async(req, res) => {
+    const id = req.params.id
+    const bill = await Bill.findById({_id: id})
+    if(!bill){
+       return res.status(404).send('Bill not found')
+    }
+
+    await bill.deleteOne()
+    res.status(200).send(bill)
+
+}

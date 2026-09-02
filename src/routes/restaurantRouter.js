@@ -1,7 +1,16 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
 import upload from '../middleware/upload.js';
-import { registerRestaurant, getRestaurant, updateRestaurant, loginRestaurant, uploadMenu, getMenu, replaceMenu, finalBill } from '../controllers/restaurantController.js';
+import { 
+    registerRestaurant, 
+    getRestaurant, 
+    updateRestaurant, 
+    loginRestaurant, 
+    uploadMenu, 
+    getMenu, 
+    replaceMenu, 
+    finalBill,
+    cancelBill } from '../controllers/restaurantController.js';
 
 
 
@@ -15,6 +24,7 @@ router.post('/restaurant/menu', auth, upload.single('menu'), uploadMenu)
 router.get('/restaurant/menu', auth, getMenu)
 router.put('/restaurant/menu', auth, upload.single('menu'), replaceMenu)
 router.post('/restaurant/bill', auth, finalBill)
+router.delete('/restaurant/bill/:id', auth, cancelBill)
 
 export default router
 
