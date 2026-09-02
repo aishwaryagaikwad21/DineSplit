@@ -56,12 +56,12 @@ restaurantSchema.methods.generateAuthToken = async function() {
 restaurantSchema.statics.findByCredentials = async function(email, password){
    const findRestaurant = await Restaurant.findOne({email})
    if(!findRestaurant){
-    throw new Error('Unable to login')
+    throw new Error('Not Found')
    }
 
      const isMatch = await argon2.verify(findRestaurant.password, password)
      if(!isMatch){
-        throw new Error('Unable to login')
+        throw new Error('Not Found')
      }
    
    return findRestaurant

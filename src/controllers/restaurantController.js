@@ -28,6 +28,40 @@ export const getRestaurant = async (req, res) => {
     }
 }
 
+export const updateRestaurant = async (req, res) => {
+    try{
+        
+        const updates = Object.keys(req.body);
+        const allowedUpdates = ['name', 'address', 'email', 'password', 'socialMediaHandles']
+        const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+        if(!isValidOperation){
+            return res.status(400).send({error:'Invalid update'})
+        }
+
+        try{
+            const restaurant = req.restaurant
+
+            if(!restaurant){
+                res.status(404).send('Not found')
+            }
+
+            updates.forEach((update) => {
+                restaurant[update] = req.body[update]
+            })
+
+            await restaurant.save()
+            res.status(200).send(restaurant)
+        }
+        catch(err){
+
+        }
+
+    }
+    catch(err){
+
+    }
+}
+
 export const loginRestaurant = async (req, res) => {
     try{
         const restaurant = await Restaurant.findByCredentials(req.body.email, req.body.password)
