@@ -36,6 +36,11 @@ export const billDetails = async (req, res) => {
            return res.status(404).send('Not found')
        }
 
+       const splitExists = await Split.findOne({billId: bill._id})
+       if(splitExists){
+        return res.status(409).send('Split already exists! can only update')
+       }
+
       const splitBillDetails = await splitBill({
             bill, 
             splitType, 
