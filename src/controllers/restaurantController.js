@@ -76,6 +76,10 @@ export const loginRestaurant = async (req, res) => {
 export const uploadMenu = async (req, res) => {
      try {
 
+        if (!req.file) {
+            return res.status(400).send({message: 'Menu file is required'})
+        }
+
         // Convert uploaded Buffer → string
         const fileContent = req.file.buffer.toString('utf-8')
 
@@ -128,6 +132,58 @@ export const getMenu = async (req, res) => {
     }
     catch(e){
         res.status(400).send({error: e})
+    }
+}
+
+export const replaceMenu = async (req, res) => {
+    try {
+
+        if(!req.file){
+            return res.status(400).send({message: 'Menu file is required'})
+        }
+
+        // Convert uploaded Buffer → string
+        const fileContent = req.file.buffer.toString('utf-8')
+
+        // Convert JSON string → JavaScript object
+        const menu = JSON.parse(fileContent)
+
+        // Validate menu
+        const result = menuSchema.safeParse(menu)
+
+        if (!result.success) {
+            return res.status(400).send({
+                message: 'Invalid menu format',
+                errors: result.error.issues
+            })
+        }
+
+        // Find existing menu
+        const existingMenu = await Menu.findOne({
+            restaurantId: req.restaurant._id
+        })
+
+        if (!existingMenu) {
+            return res.status(404).send({
+                message: 'No existing menu found. Use POST to upload a menu.'
+            })
+        }
+
+        // Replace existing menu
+        existingMenu.filename = req.file.originalname
+        existingMenu.content = req.file.buffer
+        existingMenu.contentType = req.file.mimetype
+
+        await existingMenu.save()
+
+        res.status(200).send({
+            message: 'Menu replaced successfully'
+        })
+
+    } catch (err) {
+        res.status(400).send({
+            message: err.message
+        })
     }
 }
 

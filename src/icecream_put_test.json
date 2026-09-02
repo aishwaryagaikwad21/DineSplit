@@ -1,0 +1,77 @@
+[
+  {
+    "menu_id": "IC101",
+    "dishname": "Blueberry Cheesecake",
+    "price": 180
+  },
+  {
+    "menu_id": "IC102",
+    "dishname": "Dark Chocolate",
+    "price": 170
+  },
+  {
+    "menu_id": "IC103",
+    "dishname": "Strawberry Cheesecake",
+    "price": 190
+  },
+  {
+    "menu_id": "IC104",
+    "dishname": "Mango Sorbet",
+    "price": 150
+  },
+  {
+    "menu_id": "IC105",
+    "dishname": "Hazelnut Praline",
+    "price": 200
+  },
+  {
+    "menu_id": "IC106",
+    "dishname": "Salted Caramel",
+    "price": 180
+  },
+  {
+    "menu_id": "IC107",
+    "dishname": "Kulfi",
+    "price": 140
+  },
+  {
+    "menu_id": "IC108",
+    "dishname": "Rose Falooda",
+    "price": 160
+  },
+  {
+    "menu_id": "IC109",
+    "dishname": "Blueberry Muffin",
+    "price": 170
+  },
+  {
+    "menu_id": "IC110",
+    "dishname": "Nutella Swirl",
+    "price": 190
+  },
+  {
+    "menu_id": "IC111",
+    "dishname": "Paan Ice Cream",
+    "price": 150
+  },
+  {
+    "menu_id": "IC112",
+    "dishname": "Tiramisu",
+    "price": 200
+  },
+  {
+    "menu_id": "IC113",
+    "dishname": "Lemon Cheesecake",
+    "price": 180
+  },
+  {
+    "menu_id": "IC114",
+    "dishname": "Coconut Cream",
+    "price": 160
+  },
+  {
+    "menu_id": "IC115",
+    "dishname": "Ferrero Rocher",
+    "price": 220
+  }
+]
