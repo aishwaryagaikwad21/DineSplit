@@ -73,5 +73,8 @@ export const getSplitBill = async (req, res) => {
     catch(e){
         res.status(400).send(e)
     }
+}
 
+export const offlineBillGeneration = async(req, res) => {
+    
 }
