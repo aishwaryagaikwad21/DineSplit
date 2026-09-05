@@ -141,3 +141,20 @@ export const splitDetails = async(req, res) => {
 
     res.status(200).send(splitScannedBillSaved)
 }
+
+
+export const finalSplitBill = async (req, res) => {
+
+    const id = req.params.id
+    try{
+        const bill = await ScannedSplit.findOne({billId: id})
+        if(!bill){
+            return res.status(404).send('Not Found')
+        }
+
+        res.status(200).send(bill)
+    }
+    catch(err){
+        return res.status(500).send(err)
+    }
+}
