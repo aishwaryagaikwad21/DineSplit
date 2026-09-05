@@ -91,3 +91,19 @@ export const scanOfflineBill = async (req, res) => {
         });
     }
 }
+
+export const getBill = async (req, res) => {
+    const id = req.params.id
+    try{
+        const bill = await OfflineBill.findById({_id: id})
+
+        if(!bill){
+            return res.status(404).send('Not found')
+        }
+        
+        res.status(200).send(bill)
+    }
+    catch(err){
+        res.status(500).send(err)
+    }
+}
