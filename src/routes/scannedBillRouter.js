@@ -2,11 +2,11 @@ import express from 'express'
 
 import { image } from '../middleware/image.js'
 
-import { scanOfflineBill, getBill, splitDetails } from '../controllers/offlineBillController.js'
+import { scanBill, getBill, splitDetails } from '../controllers/scannedBillController.js'
 
 const router = express.Router()
 
-router.post('/scan',image.single("billImage"),scanOfflineBill)
+router.post('/scan',image.single("billImage"),scanBill)
 router.get('/scanned-bill/:id', getBill)
 router.post('/split-details/:id', splitDetails)
 

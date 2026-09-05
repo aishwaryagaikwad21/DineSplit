@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const offlineBillSchema = new mongoose.Schema({
+const scannedBillSchema = new mongoose.Schema({
     dishes: [{
         dishName:{
             type: String,
@@ -39,4 +39,4 @@ const offlineBillSchema = new mongoose.Schema({
 )
 
 
-export const OfflineBill = mongoose.model('offlineBill', offlineBillSchema)
+export const ScannedBill = mongoose.model('scannedBill', scannedBillSchema)

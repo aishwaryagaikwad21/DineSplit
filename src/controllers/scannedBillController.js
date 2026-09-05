@@ -1,8 +1,8 @@
-import { OfflineBill } from "../models/offlinebill.js";
-import { OfflineSplit } from "../models/offlinesplit.js";
+import { ScannedBill } from "../models/scanbill.js";
+import { ScannedSplit } from "../models/scannedsplit.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
-import { extractedDishesSchema } from "../validators/offlineBillValidator.js";
+import { extractedDishesSchema } from "../validators/scannedBillValidator.js";
 
 const cleanJson = (text) => {
 
@@ -13,7 +13,7 @@ const cleanJson = (text) => {
 };
 
 
-export const scanOfflineBill = async (req, res) => {
+export const scanBill = async (req, res) => {
     try{
         if(!req.file){
             return res.status(400).send({message: "Bill image is required"});
@@ -69,19 +69,19 @@ export const scanOfflineBill = async (req, res) => {
          //Calculate grand total
          const grandTotal = Number((subtotal + tax).toFixed(2))
 
-         //create OfflineBill document
-         const offlineBill = new OfflineBill({
+         //create scannedBill document
+         const scannedBill = new ScannedBill({
             dishes,
             subtotal,
             tax,
             grandTotal
         });
 
-        await offlineBill.save();
+        await scannedBill.save();
 
         return res.status(201).send({
-            message: "Offline bill processed successfully",
-            data: offlineBill
+            message: "scanned bill processed successfully",
+            data: scannedBill
         });
     }
     catch(err){
@@ -96,7 +96,7 @@ export const scanOfflineBill = async (req, res) => {
 export const getBill = async (req, res) => {
     const id = req.params.id
     try{
-        const bill = await OfflineBill.findById({_id: id})
+        const bill = await ScannedBill.findById({_id: id})
 
         if(!bill){
             return res.status(404).send('Not found')
@@ -112,7 +112,7 @@ export const getBill = async (req, res) => {
 export const splitDetails = async(req, res) => {
 
     const id = req.params.id
-    const bill = await OfflineBill.findById({_id: id})
+    const bill = await ScannedBill.findById({_id: id})
 
     if(!bill){
        return res.status(404).send('Bill not found')
@@ -125,7 +125,7 @@ export const splitDetails = async(req, res) => {
         dishDetails
     } = req.body
 
-    const splitExists = await OfflineSplit.findOne({billId: bill._id})
+    const splitExists = await ScannedSplit.findOne({billId: bill._id})
     if(splitExists){
         return res.status(400).send('Split already exists! can only update')
     }

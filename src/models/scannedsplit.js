@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import memberSchema from "./member.js";
 
-const offlineSplitSchema = new mongoose.Schema({
+const scannedSplitSchema = new mongoose.Schema({
     billId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'OfflineBill',
+        ref: 'ScannedBill',
         required: true
     },
     totalMembers:{
@@ -24,4 +24,4 @@ const offlineSplitSchema = new mongoose.Schema({
     }
 })
 
-export const OfflineSplit = mongoose.model('OfflineSplit', offlineSplitSchema)
+export const ScannedSplit = mongoose.model('scannedSplit', scannedSplitSchema)
