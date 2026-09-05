@@ -1,6 +1,6 @@
 import { calculateEqualSplit } from "./split/equalSplit.js";
 import { calculateItemWiseSplit } from "./split/itemWiseSplit.js";
-import { createSplit } from "./split/createSplit.js";
+import { createSplit} from "./split/createSplit.js";
 
 export const splitBill = async ({
     bill,
@@ -28,12 +28,13 @@ export const splitBill = async ({
         );
     }
 
-    return await createSplit({
-        bill,
-        splitType,
-        totalMembers,
-        members
-    });
+        return await createSplit({
+          bill,
+          splitType,
+          totalMembers,
+          members
+      });
+    
 };
 
 /* 

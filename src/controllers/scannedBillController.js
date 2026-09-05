@@ -3,6 +3,7 @@ import { ScannedSplit } from "../models/scannedsplit.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
 import { extractedDishesSchema } from "../validators/scannedBillValidator.js";
+import { splitScannedBill } from "../services/splitScannedBill.js";
 
 const cleanJson = (text) => {
 
@@ -130,7 +131,13 @@ export const splitDetails = async(req, res) => {
         return res.status(400).send('Split already exists! can only update')
     }
 
-    console.log(bill)
-    console.log(totalMembers, splitType, memNames, dishDetails)
-    res.send('Ready to split')
+    const splitScannedBillSaved = await splitScannedBill({
+        bill,
+        totalMembers,
+        splitType,
+        memNames,
+        dishDetails
+    })
+
+    res.status(200).send(splitScannedBillSaved)
 }

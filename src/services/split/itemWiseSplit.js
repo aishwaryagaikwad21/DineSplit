@@ -18,9 +18,17 @@ export const calculateItemWiseSplit = (
     // Process each dish
     bill.dishes.forEach((billDish) => {
 
-        const getDishDetails = dishDetails.find(
+        let getDishDetails;
+
+        if(billDish.menu_id){ //if menu_id exists
+            getDishDetails = dishDetails.find(
             (dish) => billDish.menu_id === dish.menu_id
         );
+        }
+        else{ //for scanned bills - when menu_id does not exists
+            getDishDetails = dishDetails.find(
+                (dish) => billDish.dishName === dish.dishname)
+        }
 
         const people = getDishDetails.who_ordered;
 
@@ -38,7 +46,7 @@ export const calculateItemWiseSplit = (
             );
 
             members[name].items.push({
-                menu_id: billDish.menu_id,
+                // menu_id: billDish.menu_id,
                 dishname: billDish.dishName,
                 amount: amountPerPerson
             });
