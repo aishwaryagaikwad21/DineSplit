@@ -38,4 +38,5 @@ const offlineBillSchema = new mongoose.Schema({
 }
 )
 
+
 export const OfflineBill = mongoose.model('offlineBill', offlineBillSchema)

@@ -1,4 +1,5 @@
 import { OfflineBill } from "../models/offlinebill.js";
+import { OfflineSplit } from "../models/offlinesplit.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
 import { extractedDishesSchema } from "../validators/offlineBillValidator.js";
@@ -100,10 +101,36 @@ export const getBill = async (req, res) => {
         if(!bill){
             return res.status(404).send('Not found')
         }
-        
+
         res.status(200).send(bill)
     }
     catch(err){
         res.status(500).send(err)
     }
+}
+
+export const splitDetails = async(req, res) => {
+
+    const id = req.params.id
+    const bill = await OfflineBill.findById({_id: id})
+
+    if(!bill){
+       return res.status(404).send('Bill not found')
+    }
+
+    const {
+        totalMembers,
+        splitType,
+        memNames, 
+        dishDetails
+    } = req.body
+
+    const splitExists = await OfflineSplit.findOne({billId: bill._id})
+    if(splitExists){
+        return res.status(400).send('Split already exists! can only update')
+    }
+
+    console.log(bill)
+    console.log(totalMembers, splitType, memNames, dishDetails)
+    res.send('Ready to split')
 }

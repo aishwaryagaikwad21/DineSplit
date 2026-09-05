@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import memberSchema from "./member.js";
 
 const offlineSplitSchema = new mongoose.Schema({
+    billId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'OfflineBill',
+        required: true
+    },
     totalMembers:{
         type: Number,
         required: true
