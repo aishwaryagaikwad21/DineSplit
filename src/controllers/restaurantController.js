@@ -3,6 +3,7 @@ import Menu from '../models/menu.js';
 import menuSchema from '../validators/menuValidator.js';
 import { Bill } from '../models/bill.js';
 import { restaurantRegValidation, restaurantUpdateValidation } from '../validators/restaurantValidators.js';
+import { loginValidation } from '../validators/loginValidator.js';
 
 export const registerRestaurant = async (req, res) => {
 
@@ -95,13 +96,24 @@ export const deleteRestaurant = async (req, res) => {
 }
 
 export const loginRestaurant = async (req, res) => {
+
+    const result = loginValidation.safeParse(req.body)
+    if(!result.success){
+        return res.status(400).send({
+            message: 'Invalid inputs',
+            errors: result.error.issues
+        })
+    }
+
     try{
-        const restaurant = await Restaurant.findByCredentials(req.body.email, req.body.password)
+        const restaurant = await Restaurant.findByCredentials(result.data.email, result.data.password)
         const token = await restaurant.generateAuthToken();
         res.status(200).send({restaurant, token})
     }
     catch(err){
-        res.status(401).send(err)
+        res.status(401).send({
+            message: "Invalid email or password"
+        })
     }
 }
 
