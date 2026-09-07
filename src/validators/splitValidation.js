@@ -66,3 +66,17 @@ export const splitValidation = z.object({
     });
 
 });
+
+export const splitUpdateValidation = z.object({
+    splitType: z.enum(["equal", "item-wise"]).optional(),
+
+    totalMembers: z.number().positive().optional(),
+
+    memNames: z.array(
+        z.string().trim().min(1)
+    ).optional(),
+
+    dishDetails: z.array(
+        dishDetailSchema
+    ).optional()
+});
