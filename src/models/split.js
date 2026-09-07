@@ -12,15 +12,36 @@ const splitSchema = new mongoose.Schema({
         ref: 'Restaurant',
         required: true
     },
-    totalMembers:{
-        type: Number,
-        required: true
-    },
     splitType: {
         type: String,
         required: true,
         enum: ['equal', 'item-wise']
     },
+    totalMembers:{
+        type: Number,
+        required: true
+    },
+
+     memNames: [{
+        type: String,
+        required: true,
+        trim: true
+    }],
+
+    dishDetails: [{
+        menu_id: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        who_ordered: [{
+            type: String,
+            required: true,
+            trim: true
+        }]
+    }],
+
     members: [memberSchema],
 
     totalAmount: {
