@@ -2,10 +2,25 @@ import { Restaurant } from '../models/restaurant.js'
 import Menu from '../models/menu.js';
 import menuSchema from '../validators/menuValidator.js';
 import { Bill } from '../models/bill.js';
+import { restaurantRegValidation } from '../validators/restaurantValidators.js';
 
 export const registerRestaurant = async (req, res) => {
 
-    const restaurant = new Restaurant(req.body);
+    const result = restaurantRegValidation.safeParse(req.body)
+    if (!result.success) {
+            return res.status(400).send({
+                message: 'Invalid menu format',
+                errors: result.error.issues
+            })
+    }
+
+    const restaurant = new Restaurant({
+        name: req.body.name,
+        address: req.body.address,
+        email: req.body.email,
+        password: req.body.password,
+        socialMediaHandles: req.body.socialMediaHandles
+    });
 
     try {
         const savedRestaurant = await restaurant.save();
