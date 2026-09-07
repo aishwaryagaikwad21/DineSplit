@@ -4,6 +4,8 @@ import menuSchema from '../validators/menuValidator.js';
 import { Bill } from '../models/bill.js';
 import { restaurantRegValidation, restaurantUpdateValidation } from '../validators/restaurantValidators.js';
 import { loginValidation } from '../validators/loginValidator.js';
+import { billValidation } from '../validators/billValidation.js';
+
 
 export const registerRestaurant = async (req, res) => {
 
@@ -232,11 +234,22 @@ export const replaceMenu = async (req, res) => {
 }
 
 export const finalBill = async (req, res) => {
+
+    const result = billValidation.safeParse(req.body)
+    if(!result.success){
+        return res.status(400).send({
+            message: 'Invalid inputs',
+            errors: result.error.issues
+        })
+    }
+
+    const { tableNumber, dishes } = result.data;
+
     try{
         const billDetails = new Bill({
             restaurantId: req.restaurant._id,
-            tableNumber: req.body.tableNumber,
-            dishes: req.body.dishes
+            tableNumber,
+            dishes
         })
         
         await billDetails.save()
@@ -244,7 +257,9 @@ export const finalBill = async (req, res) => {
     }
     catch(err){
         console.log(err);
-        res.status(400).send(err)
+        return res.status(500).send({
+            message: "Failed to create bill"
+        });
     }
 }
 
