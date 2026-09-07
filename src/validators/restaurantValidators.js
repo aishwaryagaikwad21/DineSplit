@@ -10,3 +10,8 @@ export const restaurantRegValidation = z.object({
         z.string()
     )
 })
+
+export const restaurantUpdateValidation =
+    restaurantRegValidation.partial();
+
+//extends validation to update request too

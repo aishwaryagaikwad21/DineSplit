@@ -2,14 +2,14 @@ import { Restaurant } from '../models/restaurant.js'
 import Menu from '../models/menu.js';
 import menuSchema from '../validators/menuValidator.js';
 import { Bill } from '../models/bill.js';
-import { restaurantRegValidation } from '../validators/restaurantValidators.js';
+import { restaurantRegValidation, restaurantUpdateValidation } from '../validators/restaurantValidators.js';
 
 export const registerRestaurant = async (req, res) => {
 
     const result = restaurantRegValidation.safeParse(req.body)
     if (!result.success) {
             return res.status(400).send({
-                message: 'Invalid menu format',
+                message: 'Invalid input',
                 errors: result.error.issues
             })
     }
@@ -55,13 +55,20 @@ export const updateRestaurant = async (req, res) => {
 
         try{
             const restaurant = req.restaurant
+             if(!restaurant){
+                return res.status(404).send('Not found')
+            }
 
-            if(!restaurant){
-                res.status(404).send('Not found')
+            const result = restaurantUpdateValidation.safeParse(req.body)
+            if(!result.success){
+                return res.status(400).send({
+                    message: 'Invalid Input',
+                    errors: result.error.issues
+                })
             }
 
             updates.forEach((update) => {
-                restaurant[update] = req.body[update]
+                restaurant[update] = result.data[update]
             })
 
             await restaurant.save()
