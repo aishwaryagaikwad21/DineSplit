@@ -1,7 +1,7 @@
 import { Bill } from '../models/bill.js';
 import { splitBill } from '../services/splitBill.js';
 import { Split } from '../models/split.js'
-import { splitValidation } from '../validators/splitValidation.js';
+import { splitValidation, splitUpdateValidation } from '../validators/splitValidation.js';
 
 export const findFinalBill = async (req, res) => {
     try{
@@ -88,6 +88,57 @@ export const getSplitBill = async (req, res) => {
       return  res.status(400).send({
          message: "Failed to process bill split"
       })
+    }
+}
+
+export const updateSplitData = async (req, res) => {
+    
+    const {billId, restaurantId} = req.params
+
+    try{
+        const findSplitBill = await Split.findOne({billId, restaurantId})
+
+        if(!findSplitBill){
+           return res.status(404).send('split Bill Not Found')
+        }
+
+        const actualBill = await Bill.searchBill(billId, restaurantId)
+        if(!actualBill){
+            return res.status(404).send('actual Bill Not Found')
+        }
+
+        
+        const result = splitUpdateValidation.safeParse(req.body)
+        if(!result.success){
+            return res.status(400).send({
+                    message: 'Invalid Input!',
+                    errors: result.error.issues
+                })
+        }
+
+        const updates = result.data;
+        const totalMembers = updates.totalMembers ?? findSplitBill.totalMembers;
+        const splitType = updates.splitType ?? findSplitBill.splitType;
+        const memNames = updates.memNames ?? findSplitBill.memNames;
+        const dishDetails = updates.dishDetails ?? findSplitBill.dishDetails;
+
+         const splitBillDetails = await splitBill({
+            bill: actualBill, 
+            splitType, 
+            totalMembers, 
+            memNames, 
+            dishDetails
+        })
+
+      res.status(200).send(splitBillDetails)
+
+    }
+    catch(err){
+        return res.status(500).send({
+        message: 'Error occurred',
+        error: err.message,
+        stack: err.stack
+    });
     }
 }
 
