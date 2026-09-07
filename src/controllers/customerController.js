@@ -1,6 +1,7 @@
 import { Bill } from '../models/bill.js';
 import { splitBill } from '../services/splitBill.js';
 import { Split } from '../models/split.js'
+import { splitValidation } from '../validators/splitValidation.js';
 
 export const findFinalBill = async (req, res) => {
     try{
@@ -15,12 +16,25 @@ export const findFinalBill = async (req, res) => {
         res.status(200).send(bill)
     }
     catch(err){
-        res.status(400).send(err)
+        res.status(400).send({
+            message: 'Error occurred',
+            error: err
+        })
     }
 }
 
 export const billDetails = async (req, res) => {
     try{
+
+         const result = splitValidation.safeParse(req.body);
+
+        if (!result.success) {
+            return res.status(400).send({
+                message: "Invalid inputs",
+                errors: result.error.issues
+            });
+        }
+
        const { bill_id } = req.params
 
        const {
@@ -29,7 +43,7 @@ export const billDetails = async (req, res) => {
         totalMembers,
         memNames,
         dishDetails
-       } = req.body
+       } = result.data
     
        const bill = await Bill.searchBill(bill_id, restaurant_id)
        if(!bill){
@@ -68,10 +82,12 @@ export const getSplitBill = async (req, res) => {
            return res.status(404).send('Not Found')
         }
 
-        res.status(200).send(bill)
+        return res.status(200).send(bill)
     }
     catch(e){
-        res.status(400).send(e)
+      return  res.status(400).send({
+         message: "Failed to process bill split"
+      })
     }
 }
 
