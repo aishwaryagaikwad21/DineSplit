@@ -32,6 +32,8 @@ export const splitBill = async ({
           bill,
           splitType,
           totalMembers,
+          memNames,
+          dishDetails,
           members
       });
     

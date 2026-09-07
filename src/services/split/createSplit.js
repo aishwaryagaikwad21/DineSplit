@@ -5,19 +5,32 @@ export const createSplit = async ({
     bill,
     splitType,
     totalMembers,
+    memNames,
+    dishDetails,
     members
 }) => {
 
-    const splitBillDetails = new Split({
-        billId: bill._id,
-        restaurantId: bill.restaurantId,
-        totalMembers,
-        splitType,
-        members,
-        totalAmount: bill.grandTotal
-    });
-
-    await splitBillDetails.save();
+    const splitBillDetails = await Split.findOneAndUpdate(
+        {
+            billId: bill._id,
+            restaurantId: bill.restaurantId
+        },
+        {
+            billId: bill._id,
+            restaurantId: bill.restaurantId,
+            splitType,
+            totalMembers,
+            memNames,
+            dishDetails,
+            members,
+            totalAmount: bill.grandTotal
+        },
+        {
+            new: true,
+            upsert: true,
+            runValidators: true
+        }
+    );
 
     return splitBillDetails;
 };
