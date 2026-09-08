@@ -1,5 +1,6 @@
 export const calculateItemWiseSplit = (
     bill,
+    totalMembers,
     memNames,
     dishDetails
 ) => {
@@ -51,6 +52,13 @@ export const calculateItemWiseSplit = (
                 amount: amountPerPerson
             });
         });
+    });
+
+    const additionalChargesOwed = bill.additionalChargesTotal / totalMembers
+    const discountOwed = bill.discount.amount / totalMembers;
+
+    Object.values(members).forEach((member) => {
+        member.amountOwed = Number(((member.amountOwed + additionalChargesOwed) - discountOwed).toFixed(2));
     });
 
     return Object.values(members);
