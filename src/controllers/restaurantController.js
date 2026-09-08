@@ -243,13 +243,20 @@ export const finalBill = async (req, res) => {
         })
     }
 
-    const { tableNumber, dishes } = result.data;
+        const {
+            tableNumber,
+            dishes,
+            additionalCharges,
+            discount
+    } = result.data;
 
     try{
         const billDetails = new Bill({
             restaurantId: req.restaurant._id,
             tableNumber,
-            dishes
+            dishes,
+            additionalCharges,
+            discount
         })
         
         await billDetails.save()
