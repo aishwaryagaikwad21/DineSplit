@@ -7,8 +7,7 @@ const billSchema = new mongoose.Schema({
         required: true
     },
     tableNumber: {
-        type: Number,
-        trim: true
+        type: Number
     },
     dishes: [{
         menu_id:{
@@ -38,9 +37,25 @@ const billSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    tax:{
+    additionalCharges:{
+        type: Map,
+        of: Number,
+        default: new Map()
+    },
+    additionalChargesTotal: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
+    },
+    discount:{
+        percent: {
+            type: String,
+            default: "0%"
+        },
+        amount: {
+            type: Number,
+            default: 0
+        }
     },
     grandTotal:{
         type: Number,
@@ -60,11 +75,10 @@ billSchema.pre('validate', function(next){
 
     bill.subtotal = bill.dishes.reduce((total, dish) => total + dish.itemTotal, 0)
 
-    const taxRate = 0.05
+    bill.additionalChargesTotal = [...bill.additionalCharges.values()].reduce((total, charge) => total + charge, 0);
+    
+    bill.grandTotal = bill.subtotal + bill.additionalChargesTotal - bill.discount.amount;
 
-    bill.tax = bill.subtotal * taxRate
-
-    bill.grandTotal = bill.subtotal + bill.tax
 })
 
 billSchema.statics.searchBill = async (bill_id, restaurant_id) => {
