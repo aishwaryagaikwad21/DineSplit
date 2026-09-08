@@ -9,5 +9,14 @@ export const dishSchema = z.object({
 
 export const billValidation = z.object({
     tableNumber: z.number("Table number should be a number").positive("Table number must be positive"),
-    dishes: z.array(dishSchema).min(1, "At least one dish is required")
+    dishes: z.array(dishSchema).min(1, "At least one dish is required"),
+    additionalCharges: z.record(z.string(), z.number()).default({}),
+
+    discount: z.object({
+        percent: z.string().default("0%"),
+        amount: z.number().default(0)
+    }).default({
+        percent: "0%",
+        amount: 0
+    })
 });
