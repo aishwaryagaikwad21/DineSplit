@@ -23,6 +23,7 @@ export const splitScannedBill = async ({
         if (splitType === "item-wise") {
                 members = calculateItemWiseSplit(
                     bill,
+                    totalMembers,
                     memNames,
                     dishDetails
                 );
@@ -36,7 +37,7 @@ export const splitScannedBill = async ({
         });
 
         
-}
+} 
 
 
 

@@ -27,8 +27,7 @@ export const calculateItemWiseSplit = (
         );
         }
         else{ //for scanned bills - when menu_id does not exists
-            getDishDetails = dishDetails.find(
-                (dish) => billDish.dishName === dish.dishname)
+           getDishDetails = dishDetails.find((dish) => billDish._id.toString() === dish.dishId);
         }
 
         const people = getDishDetails.who_ordered;
