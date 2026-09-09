@@ -2,7 +2,7 @@ import { ScannedBill } from "../models/scanbill.js";
 import { ScannedSplit } from "../models/scannedsplit.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
-import { extractedDishesSchema } from "../validators/scannedBillValidator.js";
+import { extractedBill } from "../validators/scannedBillValidator.js";
 import { splitScannedBill } from "../services/splitScannedBill.js";
 
 const cleanJson = (text) => {
@@ -28,12 +28,17 @@ export const scanBill = async (req, res) => {
         const aiResponse = await extractDishDetails(ocrText)
         //console.log("AI RESPONSE:");
         //console.log(aiResponse);
+        if(!aiResponse){
+           return res.status(400).send({
+            message: "Unable to extract bill details"
+           })
+        }
 
         //parse JSON
         const parsedResponse = JSON.parse(cleanJson(aiResponse))
 
-        //zod validation
-        const validationResult = extractedDishesSchema.safeParse(parsedResponse)
+        // //zod validation
+        const validationResult = extractedBill.safeParse(parsedResponse)
 
         if (!validationResult.success) {
 
@@ -43,53 +48,53 @@ export const scanBill = async (req, res) => {
             });
         }
 
-        const extractedDishes = validationResult.data
+        const parsedBill = validationResult.data  //client will store it temporarily/ maintain a State
 
-        //Calculate itemTotal 
-        const dishes = extractedDishes.map((dish) => {
+        return res.status(200).send(parsedBill)
 
-            const itemTotal = Number(
-                (dish.price * dish.quantity).toFixed(2)
-            );
-
-            return {
-                dishName: dish.dishName,
-                price: dish.price,
-                quantity: dish.quantity,
-                itemTotal
-            };
-        });
-
-        //Calculate subtotal 
-         const subtotal = Number(dishes.reduce((sum, dish) => sum + dish.itemTotal, 0).toFixed(2));
-
-         //Calculate tax
-         const taxRate = 0.05
-         const tax = Number((subtotal * taxRate).toFixed(2))
-
-         //Calculate grand total
-         const grandTotal = Number((subtotal + tax).toFixed(2))
-
-         //create scannedBill document
-         const scannedBill = new ScannedBill({
-            dishes,
-            subtotal,
-            tax,
-            grandTotal
-        });
-
-        await scannedBill.save();
-
-        return res.status(201).send({
-            message: "scanned bill processed successfully",
-            data: scannedBill
-        });
     }
     catch(err){
         console.error(err);
 
         return res.status(500).send({
-            message: "Failed to process offline bill"
+            message: "Something went wrong"
+        });
+    }
+}
+
+export const confirmBill = async (req, res) => {
+    
+    const result = extractedBill.safeParse(req.body)
+    if(!result.success){
+        return res.status(400).send({
+            message: 'Invalid inputs',
+            errors: result.error.issues
+        })
+    }
+
+    const {
+        dishes,
+        additionalCharges,
+        discount
+    } = result.data
+
+    try{
+        const billDetails = new ScannedBill({
+            dishes,
+            additionalCharges,
+            discount
+        })
+
+        await billDetails.save();
+
+        return res.status(201).send({
+            message: "Bill confirmed successfully",
+            bill: billDetails
+        });
+    }
+    catch(err){
+        return res.status(500).send({
+            message: "Failed to create bill"
         });
     }
 }
