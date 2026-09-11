@@ -56,3 +56,29 @@ export const createScannedSplit = async({
 
     return splitBillDetails;
 }
+
+export const updateScannedSplit = async({
+    bill,
+    totalMembers,
+    splitType,
+    members,
+    dishDetails
+}) => {
+    const updateSplitBill = await ScannedSplit.findOneAndUpdate({billId: bill._id}, {
+        totalMembers,
+        splitType,
+        dishDetails,
+        members,
+        totalAmount: bill.grandTotal
+    },
+    { new: true }
+    )
+
+    if (!updateSplitBill) {
+        return res.status(404).send({
+            message: "Split not found"
+        });
+    }
+
+    return updateSplitBill
+}

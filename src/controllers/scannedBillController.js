@@ -4,6 +4,7 @@ import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
 import { extractedBill, updateBillSchema } from "../validators/scannedBillValidator.js";
 import { splitScannedBill } from "../services/splitScannedBill.js";
+import { updatingSplitScannedBill } from "../services/updateSplitScannedBill.js";
 
 const cleanJson = (text) => {
 
@@ -201,6 +202,45 @@ export const splitDetails = async(req, res) => {
 
     res.status(200).send(splitScannedBillSaved)
 }
+
+export const updateSplitDetails = async (req, res) => {
+
+    const id = req.params.id;
+
+    try {
+        const bill = await ScannedBill.findById(id);
+
+        if (!bill) {
+            return res.status(404).send({
+                message: "Bill not found"
+            });
+        }
+
+        const {
+            totalMembers,
+            splitType,
+            memNames,
+            dishDetails
+        } = req.body;
+
+        const updatedSplit = await updatingSplitScannedBill({
+            bill,
+            totalMembers,
+            splitType,
+            memNames,
+            dishDetails
+        });
+
+        return res.status(200).send(updatedSplit);
+    }
+    catch (err) {
+        console.error(err);
+
+        return res.status(500).send({
+            message: "Failed to update split"
+        });
+    }
+};
 
 
 export const finalSplitBill = async (req, res) => {
