@@ -2,7 +2,7 @@ import { ScannedBill } from "../models/scanbill.js";
 import { ScannedSplit } from "../models/scannedsplit.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
-import { extractedBill } from "../validators/scannedBillValidator.js";
+import { extractedBill, updateBillSchema } from "../validators/scannedBillValidator.js";
 import { splitScannedBill } from "../services/splitScannedBill.js";
 
 const cleanJson = (text) => {
@@ -98,6 +98,61 @@ export const confirmBill = async (req, res) => {
         });
     }
 }
+
+export const updateBill = async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const result = updateBillSchema.safeParse(req.body);
+
+        if (!result.success) {
+            return res.status(400).send({
+                message: "Invalid inputs",
+                errors: result.error.issues
+            });
+        }
+
+        const {
+            dishes,
+            additionalCharges,
+            discount
+        } = result.data;
+
+        const bill = await ScannedBill.findById(id);
+
+        if (!bill) {
+            return res.status(404).send({
+                message: "Bill not found"
+            });
+        }
+
+        if (dishes !== undefined) {
+            bill.dishes = dishes;
+        }
+
+        if (additionalCharges !== undefined) {
+            bill.additionalCharges = additionalCharges;
+        }
+
+        if (discount !== undefined) {
+            bill.discount = discount;
+        }
+
+        await bill.save();
+
+        return res.status(200).send({
+            message: "Bill updated successfully",
+            bill
+        });
+    }
+    catch (err) {
+        console.error(err);
+
+        return res.status(500).send({
+            message: "Failed to update bill"
+        });
+    }
+};
 
 export const getBill = async (req, res) => {
     const id = req.params.id

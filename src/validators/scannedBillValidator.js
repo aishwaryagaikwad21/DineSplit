@@ -19,3 +19,5 @@ export const extractedBill = z.object({
     grandTotal: z.number().positive()
 })
 
+export const updateBillSchema = extractedBill.partial();
+
