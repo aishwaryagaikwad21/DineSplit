@@ -33,7 +33,8 @@ export const splitScannedBill = async ({
                   bill,
                   totalMembers,
                   splitType,
-                  members
+                  members,
+                  dishDetails
         });
 
         

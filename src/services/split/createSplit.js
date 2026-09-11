@@ -40,12 +40,14 @@ export const createScannedSplit = async({
     bill,
     totalMembers,
     splitType,
-    members
+    members,
+    dishDetails
 }) => {
     const splitBillDetails = new ScannedSplit({
         billId: bill._id,
         totalMembers,
         splitType,
+        dishDetails,
         members,
         totalAmount: bill.grandTotal
     });

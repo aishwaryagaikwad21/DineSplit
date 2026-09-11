@@ -16,6 +16,22 @@ const scannedSplitSchema = new mongoose.Schema({
         required: true,
         enum: ['equal', 'item-wise']
     },
+
+    dishDetails: [{
+        dishId: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        dishname: String,
+        
+        who_ordered: [{
+            type: String,
+            required: true,
+            trim: true
+        }]
+    }],
     members: [memberSchema],
     
     totalAmount: {
