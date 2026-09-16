@@ -1,13 +1,8 @@
-import React from 'react'
-import { Button } from "@/components/ui/button"
+import { RouterProvider } from 'react-router-dom'
+import router from './routes/AppRoutes'
 
 const App = () => {
-  return (
-    <>
-      <div className="text-4xl font-bold">App</div>
-      <Button variant="outline">Button</Button>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
