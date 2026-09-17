@@ -1,8 +1,11 @@
 import React from 'react'
 import { Utensils } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
 import GetStarted from './GetStarted'
 
 const Navbar = () => {
+  const location = useLocation() //gives you information about the current URL.
+
   return (
     <>
       <nav className=" sticky top-0 z-50 w-full bg-[#fffbf2] ">
@@ -21,6 +24,11 @@ const Navbar = () => {
 
         {/* Navigation links */}
         <div className="flex items-center gap-10">
+          {location.pathname !== '/' && (
+            <Link to="/" className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600">
+              Home
+            </Link>
+          )}
           <a
             href="#features"
             className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
