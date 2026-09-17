@@ -1,0 +1,710 @@
+{
+  "info": {
+    "_postman_id": "72da9874-406d-4610-b184-d4261801e4be",
+    "name": "DineSplit",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48871313"
+  },
+  "item": [
+    {
+      "name": "Register Restaurant",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Naturals\",\r\n    \"address\": \"Thane\",\r\n    \"email\": \"icecream@example.com\",\r\n    \"password\": \"StrongPassword123!\",\r\n    \"socialMediaHandles\": {\r\n        \"instagram\": \"Naturals\",\r\n        \"facebook\": \"naturals.fb\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurants/register",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurants",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "restaurant Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update restaurant details",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_09vd}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"naturalsicecreamthane1234@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurant/profile",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Restaurant Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"icecream@example.com\",\r\n    \"password\":\"StrongPassword123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurants/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurants",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "another login-test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\":\"burger@example.com\",\r\n    \"password\":\"StrongPassword123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurants/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurants",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete Restaurant",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_0q8m}}"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/restaurant/profile",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upload Menu",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_0w1l}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "menu",
+              "type": "file",
+              "src": [
+                "/C:/Users/aishw/Downloads/icecream_parlour_menu.json"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/restaurant/menu",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Menu (for Frontend)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_0nvf}}"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/restaurant/menu",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "put/update menu",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_09vd}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "menu",
+              "type": "file",
+              "src": [
+                "/C:/Users/aishw/Documents/DineSplit/src/icecream_put_test.json"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/restaurant/menu",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Final Bill",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{supabase_service_role_api_key_0w1l}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"tableNumber\": 7,\r\n  \"dishes\": [\r\n    {\r\n      \"menu_id\": \"IC001\",\r\n      \"dishName\": \"Vanilla Bean\",\r\n      \"price\": 120,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC002\",\r\n      \"dishName\": \"Chocolate Fudge\",\r\n      \"price\": 140,\r\n      \"quantity\": 3\r\n    },\r\n    {\r\n      \"menu_id\": \"IC003\",\r\n      \"dishName\": \"Strawberry Swirl\",\r\n      \"price\": 130,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC005\",\r\n      \"dishName\": \"Butterscotch Crunch\",\r\n      \"price\": 140,\r\n      \"quantity\": 1\r\n    },\r\n    {\r\n      \"menu_id\": \"IC007\",\r\n      \"dishName\": \"Pistachio\",\r\n      \"price\": 160,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC008\",\r\n      \"dishName\": \"Coffee Mocha\",\r\n      \"price\": 150,\r\n      \"quantity\": 1\r\n    },\r\n    {\r\n      \"menu_id\": \"IC012\",\r\n      \"dishName\": \"Belgian Chocolate\",\r\n      \"price\": 170,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC015\",\r\n      \"dishName\": \"Raspberry Cheesecake\",\r\n      \"price\": 180,\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurant/bill",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "bill"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create New bill- Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{supabase_service_role_api_key_09vd}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"tableNumber\": 7,\r\n\r\n  \"dishes\": [\r\n    {\r\n      \"menu_id\": \"IC001\",\r\n      \"dishName\": \"Vanilla Bean\",\r\n      \"price\": 120,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC002\",\r\n      \"dishName\": \"Chocolate Fudge\",\r\n      \"price\": 140,\r\n      \"quantity\": 3\r\n    },\r\n    {\r\n      \"menu_id\": \"IC003\",\r\n      \"dishName\": \"Strawberry Swirl\",\r\n      \"price\": 130,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC005\",\r\n      \"dishName\": \"Butterscotch Crunch\",\r\n      \"price\": 140,\r\n      \"quantity\": 1\r\n    },\r\n    {\r\n      \"menu_id\": \"IC007\",\r\n      \"dishName\": \"Pistachio\",\r\n      \"price\": 160,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC008\",\r\n      \"dishName\": \"Coffee Mocha\",\r\n      \"price\": 150,\r\n      \"quantity\": 1\r\n    },\r\n    {\r\n      \"menu_id\": \"IC012\",\r\n      \"dishName\": \"Belgian Chocolate\",\r\n      \"price\": 170,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"menu_id\": \"IC015\",\r\n      \"dishName\": \"Raspberry Cheesecake\",\r\n      \"price\": 180,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n\r\n  \"additionalCharges\": {\r\n    \"tax\": 180,\r\n    \"serviceCharge\": 50,\r\n    \"tip\": 70\r\n  },\r\n\r\n  \"discount\": {\r\n    \"percent\": \"10%\",\r\n    \"amount\": 200\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/restaurant/bill",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "bill"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "fetch bill",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/bill/6a9fb08db37d2a7d9f083edb/restaurants/6a92d3b5fa1d38aed5c9c3e3",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "bill",
+            "6a9fb08db37d2a7d9f083edb",
+            "restaurants",
+            "6a92d3b5fa1d38aed5c9c3e3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "bill-details (who ordered what?)-item-wise-split",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"restaurant_id\": \"6a92d3b5fa1d38aed5c9c3e3\",\r\n  \"splitType\": \"item-wise\",\r\n  \"totalMembers\": 4,\r\n  \"memNames\": [\r\n    \"Aish\",\r\n    \"Alicia\",\r\n    \"Sara\",\r\n    \"Jane\"\r\n  ],\r\n  \"dishDetails\": [\r\n    {\r\n      \"menu_id\": \"IC001\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC002\",\r\n      \"who_ordered\": [\r\n        \"Alicia\",\r\n        \"Jane\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC003\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Alicia\",\r\n        \"Jane\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC005\",\r\n      \"who_ordered\": [\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC007\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Jane\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC008\",\r\n      \"who_ordered\": [\r\n        \"Alicia\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC012\",\r\n      \"who_ordered\": [\r\n        \"Sara\",\r\n        \"Alicia\"\r\n      ]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC015\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Sara\",\r\n        \"Alicia\",\r\n        \"Jane\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/bill-details/6a9fb08db37d2a7d9f083edb",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "bill-details",
+            "6a9fb08db37d2a7d9f083edb"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "bill-details(who ordered what?)-equal-split",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\r\n{\r\n  \"restaurant_id\": \"6a92d3b5fa1d38aed5c9c3e3\",\r\n  \"splitType\": \"equal\",\r\n  \"totalMembers\": 4,\r\n  \"memNames\": [\"Aish\", \"Alicia\", \"Sara\", \"Jane\"],\r\n  \"dishDetails\": [\r\n    {\r\n      \"menu_id\": \"IC001\",\r\n      \"who_ordered\": [\"Aish\", \"Sara\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC002\",\r\n      \"who_ordered\": [\"Alicia\", \"Jane\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC003\",\r\n      \"who_ordered\": [\"Aish\", \"Alicia\", \"Jane\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC005\",\r\n      \"who_ordered\": [\"Sara\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC007\",\r\n      \"who_ordered\": [\"Aish\", \"Jane\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC008\",\r\n      \"who_ordered\": [\"Alicia\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC012\",\r\n      \"who_ordered\": [\"Sara\", \"Alicia\"]\r\n    },\r\n    {\r\n      \"menu_id\": \"IC015\",\r\n      \"who_ordered\": [\"Aish\", \"Sara\", \"Alicia\", \"Jane\"]\r\n    }\r\n  ]\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/bill-details/6a96cbb3932ae5b0ac5417e5",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "bill-details",
+            "6a96cbb3932ae5b0ac5417e5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get final split bill",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/splitbill/6a96cbb3932ae5b0ac5417e5/restaurants/6a92d3b5fa1d38aed5c9c3e3",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "splitbill",
+            "6a96cbb3932ae5b0ac5417e5",
+            "restaurants",
+            "6a92d3b5fa1d38aed5c9c3e3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update split bill details",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"splitType\":\"item-wise\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/splitbill/6a96cbb3932ae5b0ac5417e5/restaurants/6a92d3b5fa1d38aed5c9c3e3",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "splitbill",
+            "6a96cbb3932ae5b0ac5417e5",
+            "restaurants",
+            "6a92d3b5fa1d38aed5c9c3e3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete bill",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{json_web_token_09vd}}"
+          }
+        ],
+        "url": {
+          "raw": "{{url}}/restaurant/bill/6a98310dc5ea288a0e27d93d",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "restaurant",
+            "bill",
+            "6a98310dc5ea288a0e27d93d"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "bill-scan",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "billImage",
+              "type": "file",
+              "src": [
+                "/C:/Users/aishw/Downloads/frosty_scoops.png"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/scan",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "scan"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Scan-bill-test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "billImage",
+              "type": "file",
+              "src": [
+                "/C:/Users/aishw/Documents/DineSplit/src/tests/tst-8.webp"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/scan",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "scan"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "confirm-bill (scanned)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"dishes\": [\r\n        {\r\n            \"dishName\": \"Cold Coffee\",\r\n            \"price\": 427,\r\n            \"quantity\": 2,\r\n            \"itemTotal\": 854\r\n        },\r\n        {\r\n            \"dishName\": \"Cold Coffee\",\r\n            \"price\": 280,\r\n            \"quantity\": 2,\r\n            \"itemTotal\": 560\r\n        },\r\n        {\r\n            \"dishName\": \"Veg Biryani\",\r\n            \"price\": 320,\r\n            \"quantity\": 2,\r\n            \"itemTotal\": 640\r\n        },\r\n        {\r\n            \"dishName\": \"Masala Dosa\",\r\n            \"price\": 338,\r\n            \"quantity\": 2,\r\n            \"itemTotal\": 676\r\n        },\r\n        {\r\n            \"dishName\": \"Hakka Noodles\",\r\n            \"price\": 336,\r\n            \"quantity\": 2,\r\n            \"itemTotal\": 672\r\n        },\r\n        {\r\n            \"dishName\": \"Hakka Noodles\",\r\n            \"price\": 336,\r\n            \"quantity\": 3,\r\n            \"itemTotal\": 1008\r\n        }\r\n    ],\r\n    \"subtotal\": 4410,\r\n    \"additionalCharges\": {\r\n        \"CGST\": 0,\r\n        \"SGST\": 0\r\n    },\r\n    \"discount\": {\r\n        \"percent\": \"0%\",\r\n        \"amount\": 0\r\n    },\r\n    \"grandTotal\": 4410\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/confirm-bill",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "confirm-bill"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update scanned confirmed-bill",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"additionalCharges\": {\r\n        \"CGST\": 20,\r\n        \"SGST\": 20\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/update-scanned-bill/6aa15a1a961148550f9f1397",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "update-scanned-bill",
+            "6aa15a1a961148550f9f1397"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get final scanned bill",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/scanned-bill/6aa15a1a961148550f9f1397",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "scanned-bill",
+            "6aa15a1a961148550f9f1397"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "split-details (offline bill)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"totalMembers\": 4,\r\n  \"splitType\": \"item-wise\",\r\n  \"memNames\": [\r\n    \"Aish\",\r\n    \"Sara\",\r\n    \"Alicia\",\r\n    \"Jane\"\r\n  ],\r\n  \"dishDetails\": [\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f1398\",\r\n      \"dishname\": \"Cold Coffee\",\r\n      \"who_ordered\": [\r\n        \"Aish\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f1399\",\r\n      \"dishname\": \"Cold Coffee\",\r\n      \"who_ordered\": [\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139a\",\r\n      \"dishname\": \"Veg Biryani\",\r\n      \"who_ordered\": [\r\n        \"Alicia\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139b\",\r\n      \"dishname\": \"Masala Dosa\",\r\n      \"who_ordered\": [\r\n        \"Jane\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139c\",\r\n      \"dishname\": \"Hakka Noodles\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139d\",\r\n      \"dishname\": \"Hakka Noodles\",\r\n      \"who_ordered\": [\r\n        \"Alicia\",\r\n        \"Jane\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/split-details/6aa15a1a961148550f9f1397",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "split-details",
+            "6aa15a1a961148550f9f1397"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update scanned split details",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"totalMembers\": 4,\r\n  \"splitType\": \"item-wise\",\r\n  \"memNames\": [\r\n    \"Aish\",\r\n    \"Sara\",\r\n    \"Alicia\",\r\n    \"Jane\"\r\n  ],\r\n  \"dishDetails\": [\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f1398\",\r\n      \"dishname\": \"Cold Coffee\",\r\n      \"who_ordered\": [\r\n        \"Aish\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f1399\",\r\n      \"dishname\": \"Cold Coffee\",\r\n      \"who_ordered\": [\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139a\",\r\n      \"dishname\": \"Veg Biryani\",\r\n      \"who_ordered\": [\r\n        \"Alicia\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139b\",\r\n      \"dishname\": \"Masala Dosa\",\r\n      \"who_ordered\": [\r\n        \"Jane\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139c\",\r\n      \"dishname\": \"Hakka Noodles\",\r\n      \"who_ordered\": [\r\n        \"Aish\",\r\n        \"Sara\"\r\n      ]\r\n    },\r\n    {\r\n      \"dishId\": \"6aa15a1a961148550f9f139d\",\r\n      \"dishname\": \"Hakka Noodles\",\r\n      \"who_ordered\": [\r\n        \"Alicia\",\r\n        \"Jane\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/updated-scanned-split/6aa15a1a961148550f9f1397",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "updated-scanned-split",
+            "6aa15a1a961148550f9f1397"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get scanned bill split details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/final-split-bill/6aa15a1a961148550f9f1397",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "final-split-bill",
+            "6aa15a1a961148550f9f1397"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_0w1l",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0wsj",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_09vd",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_01pe",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0nvf",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0g7i",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_0w1l",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_09vd",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0q8m",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0n4p",
+      "secret": true
+    }
+  ]
+}

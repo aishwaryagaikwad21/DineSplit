@@ -187,7 +187,7 @@ export const splitDetails = async(req, res) => {
         dishDetails
     } = req.body
 
-    const splitExists = await ScannedSplit.findOne({billId: bill._id})
+    const splitExists = await ScannedSplit.findOne({billId: bill._id}) 
     if(splitExists){
         return res.status(400).send('Split already exists! can only update')
     }

@@ -32,7 +32,7 @@ export const image = multer({
             allowedMimeTypes.includes(file.mimetype);
 
         const validExtension =
-            allowedExtensions.includes(extension);
+            allowedExtensions.includes(extension); 
 
         if (!validMimeType && !validExtension) {
             return cb(

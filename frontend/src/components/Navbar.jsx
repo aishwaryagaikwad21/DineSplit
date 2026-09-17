@@ -1,10 +1,11 @@
 import React from 'react'
 import { Utensils } from 'lucide-react'
+import GetStarted from './GetStarted'
 
 const Navbar = () => {
   return (
     <>
-        <nav className="w-full bg-[#fffbf2]">
+      <nav className=" sticky top-0 z-50 w-full bg-[#fffbf2] ">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
 
         {/* Logo */}
@@ -44,19 +45,7 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center gap-6">
-          <a
-            href="/login"
-            className="text-sm font-medium text-zinc-800 hover:text-amber-600"
-          >
-            Log in
-          </a>
-
-          <a
-            href="/register"
-            className="rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-amber-500"
-          >
-            Get Started
-          </a>
+          <GetStarted />
         </div>
 
       </div>
