@@ -1,10 +1,14 @@
 import React from 'react'
-import { Utensils } from 'lucide-react'
+import { Menu, Utensils } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 import GetStarted from './GetStarted'
+import NavLinks from './NavLinks'
 
 const Navbar = () => {
-  const location = useLocation() //gives you information about the current URL.
+  
+  const [menu, setMenu] = useState(false)
+
 
   return (
     <>
@@ -23,41 +27,30 @@ const Navbar = () => {
         </div>
 
         {/* Navigation links */}
-        <div className="flex items-center gap-10">
-          {location.pathname !== '/' && (
-            <Link to="/" className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600">
-              Home
-            </Link>
-          )}
-          <a
-            href="#features"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
-          >
-            Features
-          </a>
-
-          <a
-            href="#how-it-works"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
-          >
-            How It Works
-          </a>
-
-          <a
-            href="#about"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
-          >
-            About
-          </a>
+        <div className="flex items-center gap-10 max-sm:hidden">
+          <NavLinks />
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 max-sm:hidden">
           <GetStarted />
+        </div>
+
+        <div className='block relative sm:hidden'>
+          <a href="#" onClick={() => setMenu((menu) => !menu)}>
+            <Menu className='w-6 h-6' />
+          </a>
+          {menu && (
+            <div className="flex flex-col gap-4 absolute right-0 top-full mt-2 w-64 rounded-xl border border-amber-100 bg-[#fffbf2] p-4 shadow-lg">
+              <NavLinks />
+            </div>
+          )}
         </div>
 
       </div>
     </nav>
+
+
     </>
   )
 }
