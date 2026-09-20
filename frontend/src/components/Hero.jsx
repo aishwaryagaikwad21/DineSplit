@@ -1,5 +1,5 @@
 import React from 'react'
-import GetStarted from './GetStarted'
+import GetStartedButton from './GetStartedButton'
 import Working from './Working'
 
 const Hero = () => {
@@ -23,7 +23,7 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-wrap gap-2">
-                        <GetStarted />
+                        <GetStartedButton />
                         <Working />
                     </div>
 
