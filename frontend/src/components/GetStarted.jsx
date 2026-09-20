@@ -1,5 +1,6 @@
 import React from 'react'
 import { ArrowRight, Camera, QrCode } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import {
   Card,
@@ -63,8 +64,11 @@ const GetStarted = () => {
 
               <Button
                 className="bg-amber-400 px-6 text-zinc-900 hover:bg-amber-500"
-              >
+              > 
+              <Link to='/capture-bill'>
                 Upload Bill
+              </Link>
+                
                 <ArrowRight />
               </Button>
 
