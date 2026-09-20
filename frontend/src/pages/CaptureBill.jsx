@@ -13,21 +13,29 @@ const CaptureBill = () => {
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: {
-          facingMode: 'environment',
-        },
-        audio: false,
-      })
+                  video: true,
+                  audio: false,
+                })
 
+      console.log('Camera stream:', stream)
       streamRef.current = stream
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current.play()
+        }
+
+        console.log('Video element:', videoRef.current)
+        console.log('Video readyState:', videoRef.current.readyState)
       }
 
       setCameraOpen(true)
     } catch (error) {
       console.error('Unable to access camera:', error)
+      console.error('Camera error:', error.name)
+      console.error('Message:', error.message)
+      console.error('Full error:', error)
     }
   }
 
@@ -102,6 +110,12 @@ const CaptureBill = () => {
     }
   }, [previewUrl])
 
+  useEffect(() => {
+  if (cameraOpen && videoRef.current && streamRef.current) {
+    videoRef.current.srcObject = streamRef.current
+  }
+}, [cameraOpen])
+
   // Stop camera when component unmounts
   useEffect(() => {
     return () => {
@@ -143,6 +157,7 @@ const CaptureBill = () => {
               ref={videoRef}
               autoPlay
               playsInline
+              muted
               className="aspect-video w-full object-cover"
             />
 
