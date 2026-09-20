@@ -7,27 +7,27 @@ const location = useLocation() //gives you information about the current URL.
   return (
     <>
         {location.pathname !== '/' && (
-            <Link to="/" className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600">
+            <Link to="/" className="nav-link">
               Home
             </Link>
           )}
           <a
             href="#features"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
+            className="nav-link"
           >
             Features
           </a>
 
           <a
             href="#how-it-works"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
+            className="nav-link"
           >
             How It Works
           </a>
 
           <a
             href="#about"
-            className="text-sm font-medium text-zinc-800 transition-colors hover:text-amber-600"
+            className="nav-link"
           >
             About
           </a>

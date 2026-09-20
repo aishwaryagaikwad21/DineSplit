@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Utensils } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import GetStarted from './GetStarted'
+import GetStartedButton from './GetStartedButton'
 import NavLinks from './NavLinks'
 
 const Navbar = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center gap-6 max-sm:hidden">
-          <GetStarted />
+          <GetStartedButton />
         </div>
 
         <div className='block relative sm:hidden'>

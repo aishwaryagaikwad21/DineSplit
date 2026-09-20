@@ -128,3 +128,31 @@
     @apply --font-roboto
     }
 }
+
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #27272a;
+  transition: color 200ms;
+}
+
+.nav-link:hover {
+  color: #d97706;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  border-radius: 9999px;
+  background-color: #d97706;
+  transition: width 300ms;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
