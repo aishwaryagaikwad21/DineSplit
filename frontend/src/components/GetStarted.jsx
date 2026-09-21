@@ -65,11 +65,11 @@ const GetStarted = () => {
               <Button
                 className="bg-amber-400 px-6 text-zinc-900 hover:bg-amber-500"
               > 
-              <Link to='/capture-bill'>
+              <Link to='/capture-bill' className='flex justify-center gap-2'>
                 Upload Bill
+                <ArrowRight />
               </Link>
                 
-                <ArrowRight />
               </Button>
 
             </CardContent>

@@ -10,6 +10,7 @@ import Landing from '../pages/Landing'
 import Error from '@/pages/Error'
 import GetStartedPage from '@/pages/GetStartedPage'
 import CaptureBill from '@/pages/CaptureBill'
+import ReviewBill from '@/pages/ReviewBill'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
       <Route index element={<Landing />} />
       <Route path='/get-started' element={<GetStartedPage />} />
       <Route path='capture-bill' element={<CaptureBill />}/>
+      <Route path='/bill/review' element={<ReviewBill />} />
       <Route path='*' element={<Error />} />
     </Route>
   )

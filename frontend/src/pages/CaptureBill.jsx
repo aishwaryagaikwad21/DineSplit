@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Camera, Image, RotateCcw, X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const CaptureBill = () => {
   const videoRef = useRef(null)
@@ -96,6 +97,17 @@ const CaptureBill = () => {
     setPhoto(file)
   }
 
+  const navigate = useNavigate()
+  const handleExtractBill = () => {
+  if (!photo) return
+
+  navigate('/bill/review', {
+    state: {
+      photo: photo
+    }
+  })
+}
+
   // Create preview URL
   const previewUrl = photo
     ? URL.createObjectURL(photo)
@@ -190,7 +202,7 @@ const CaptureBill = () => {
               <img
                 src={previewUrl}
                 alt="Bill preview"
-                className="max-h-[500px] w-full object-contain"
+                className='max-h-[500px] w-full object-contain'
               />
 
               <button
@@ -285,7 +297,7 @@ const CaptureBill = () => {
 
         {photo && !cameraOpen && (
           <div className="mt-8 flex justify-center">
-            <button
+            <button onClick={handleExtractBill}
               className="rounded-lg bg-amber-400 px-8 py-3 font-semibold text-zinc-900 transition-colors hover:bg-amber-500"
             >
               Extract Bill
