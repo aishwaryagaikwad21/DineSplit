@@ -57,6 +57,12 @@ export const scanBill = async (req, res) => {
     catch(err){
         console.error(err);
 
+        if (err.status === 503) {
+            return res.status(503).send({
+                message: "AI service is currently experiencing high demand. Please try again later."
+            });
+        } 
+
         return res.status(500).send({
             message: "Something went wrong"
         });

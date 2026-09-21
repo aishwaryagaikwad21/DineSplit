@@ -13,7 +13,7 @@ export const findFinalBill = async (req, res) => {
             return res.status(404).send('Bill Not Found')
         }
         
-        res.status(200).send(bill)
+        res.status(200).send(bill) 
     }
     catch(err){
         res.status(400).send({
