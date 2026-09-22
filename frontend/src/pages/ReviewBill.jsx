@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { extractBillService } from '@/services/extractBillService'
 
 const ReviewBill = () => {
 
@@ -17,23 +18,9 @@ const ReviewBill = () => {
             const formData = new FormData()
             formData.append('billImage', photo)
 
-            const response = await fetch(
-                'http://localhost:5000/scan',
-                {
-                    method: 'POST',
-                    body: formData,
-                }
-            )
+           const extractedData = await extractBillService(formData)
 
-            const data = await response.json()
-
-            if (!response.ok) {
-                throw new Error(data.message)
-            }
-
-            console.log("Bill data:", data)
-
-            setBillData(data)
+            setBillData(extractedData)
 
         } catch (error) {
             console.error("Extraction failed:", error)
