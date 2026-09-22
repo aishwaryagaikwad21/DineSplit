@@ -63,6 +63,12 @@ export const scanBill = async (req, res) => {
             });
         } 
 
+        if (err.status === 429) {
+            return res.status(429).send({
+                message: "AI usage limit has been reached. Please try again later."
+            })
+        }
+
         return res.status(500).send({
             message: "Something went wrong"
         });
