@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-import billData from '../sampleData-1.json'
-import { X } from "lucide-react"
+import { useLocation } from 'react-router-dom'
+//import billData from '../sampleData-1.json'
 import { Button } from '@base-ui/react/button'
 
 import BillDishes from '@/components/AIExtractedBill/BillDishes'
@@ -10,7 +10,10 @@ import AdditionalCharges from '@/components/AIExtractedBill/AdditionalCharges'
 import AddNewChargeForm from '@/components/AIExtractedBill/AddNewChargeForm'
 import Discount from '@/components/AIExtractedBill/Discount'
 
-const TestPage = () => {
+const EditScannedBill = () => {
+
+    const location = useLocation()
+    const billData = location.state?.billData
 
     const [bill, setBill] = useState(billData)
     const [chargeNames, setChargeNames] = useState({})
@@ -345,4 +348,4 @@ const TestPage = () => {
     )
 }
 
-export default TestPage
+export default EditScannedBill

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { extractBillService } from '@/services/extractBillService'
+import { LoaderCircle } from 'lucide-react';
+
 
 const ReviewBill = () => {
 
@@ -10,6 +13,15 @@ const ReviewBill = () => {
     const [billData, setBillData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (billData) {
+            navigate('/edit-scan', {
+                state: { billData }
+            })
+        }
+    }, [billData, navigate])
 
     const extractBill = async () => {
         try {
@@ -42,18 +54,18 @@ const ReviewBill = () => {
             <h1>Review Bill</h1>
 
             {loading && (
+                <>
                 <p>Extracting bill details...</p>
+                <div className="flex items-center justify-center">
+                    <LoaderCircle className="animate-spin text-blue-500" size={40} />
+                </div>
+                </>
             )}
 
             {error && (
                 <p>{error}</p>
             )}
 
-            {billData && (
-                <pre>
-                    {JSON.stringify(billData, null, 2)}
-                </pre>
-            )}
         </main>
     )
 }
