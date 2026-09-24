@@ -1,0 +1,50 @@
+{
+  "dishes": [
+    {
+      "dishName": "Chocolate Scoop",
+      "price": 120,
+      "quantity": 2,
+      "itemTotal": 240
+    },
+    {
+      "dishName": "Fudge Brownie Sundae",
+      "price": 180,
+      "quantity": 1,
+      "itemTotal": 180
+    },
+    {
+      "dishName": "Strawberry Scoop",
+      "price": 120,
+      "quantity": 1,
+      "itemTotal": 120
+    },
+    {
+      "dishName": "Butterscotch Scoop",
+      "price": 120,
+      "quantity": 1,
+      "itemTotal": 120
+    },
+    {
+      "dishName": "Chocolate Milkshake",
+      "price": 160,
+      "quantity": 2,
+      "itemTotal": 320
+    },
+    {
+      "dishName": "Waffle Cone",
+      "price": 40,
+      "quantity": 1,
+      "itemTotal": 40
+    }
+  ],
+  "subtotal": 1020,
+  "additionalCharges": {
+    "CGST (2.5%)": 25.5,
+    "SGST (2.5%)": 25.5
+  },
+  "discount": {
+    "percent": "0%",
+    "amount": 0
+  },
+  "grandTotal": 1071
+}

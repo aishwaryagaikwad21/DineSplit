@@ -11,6 +11,6 @@ export const extractBillService = async (formData) => {
     if (!response.ok) {
         throw new Error(data.message)
     }
-    console.log("Bill data:", data)
+    //console.log("Bill data:", data)
     return data
 }

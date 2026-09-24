@@ -13,7 +13,7 @@ const ReviewBill = () => {
 
     const extractBill = async () => {
         try {
-            console.log("Sending bill to backend...")
+            //console.log("Sending bill to backend...")
 
             const formData = new FormData()
             formData.append('billImage', photo)
@@ -23,7 +23,7 @@ const ReviewBill = () => {
             setBillData(extractedData)
 
         } catch (error) {
-            console.error("Extraction failed:", error)
+            //console.error("Extraction failed:", error)
             setError(error.message)
 
         } finally {
