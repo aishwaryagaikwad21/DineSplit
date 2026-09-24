@@ -8,6 +8,7 @@ import BillDishes from '@/components/AIExtractedBill/BillDishes'
 import AddNewDishForm from '@/components/AIExtractedBill/AddNewDishForm'
 import AdditionalCharges from '@/components/AIExtractedBill/AdditionalCharges'
 import AddNewChargeForm from '@/components/AIExtractedBill/AddNewChargeForm'
+import Discount from '@/components/AIExtractedBill/Discount'
 
 const TestPage = () => {
 
@@ -324,23 +325,10 @@ const TestPage = () => {
                 </div>
 
             {bill.discount.amount !== 0 && (
-                <>
-                    <div className='my-3'>
-                        <h3 className='mb-2 font-semibold text-2xl'>Discount</h3>
-                        <div className='flex gap-1'>
-                            { Object.entries(bill.discount).map(([discountPercent, discountAmount]) => (
-                                <div key={discountPercent} className='flex flex-col gap-1 '>
-                                    <input value={discountPercent} onChange={(e) =>
-                                            handleDiscountChange("percent", e.target.value)
-                                        } className='w-fit'/>
-                                    <input value={discountAmount} onChange={(e) =>
-                                            handleDiscountChange("amount", e.target.value)
-                                        } />
-                                </div>
-                            )) }
-                        </div>
-                    </div>
-                </>
+               <Discount 
+                    bill = {bill}
+                    onDiscountChange = {handleDiscountChange}
+               />
             )}
 
             <div className='flex gap-2 my-3'>
