@@ -107,12 +107,36 @@ export const extractDishDetails = async (ocrText) => {
     ${ocrText}
 `;
 
-    const response = await ai.models.generateContent({
-        model: "gemini-3.1-flash-lite",
-        contents: prompt
-    });
+    let response
 
-    return response.text;
+    try {
+
+        response = await ai.models.generateContent({
+            model: "gemini-3.1-flash-lite",
+            contents: prompt
+        })
+
+    } catch (error) {
+
+        if (error.status === 503) {
+
+            console.log(
+                "Primary model unavailable. Switching to fallback model..."
+            )
+
+            response = await ai.models.generateContent({
+                model: "gemini-3.5-flash-lite",
+                contents: prompt
+            })
+
+        } else {
+
+            throw error
+
+        }
+    }
+
+    return response.text
 };
 
 //gemini-3.5-flash-lite
