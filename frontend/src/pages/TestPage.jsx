@@ -6,6 +6,7 @@ import { Button } from '@base-ui/react/button'
 
 import BillDishes from '@/components/AIExtractedBill/BillDishes'
 import AddNewDishForm from '@/components/AIExtractedBill/AddNewDishForm'
+import AdditionalCharges from '@/components/AIExtractedBill/AdditionalCharges'
 
 const TestPage = () => {
 
@@ -290,26 +291,13 @@ const TestPage = () => {
             </div>
 
                 {bill.additionalCharges && (
-                    <>
-                     <div className='my-3'>
-                        <h3 className='mb-2 font-semibold text-2xl'>Additional Charges</h3>
-                        <div className='grid grid-cols-3'>
-                            { Object.entries(bill.additionalCharges).map(([chargeName, amount], index) => (
-                                <div key={chargeName} className='flex flex-col gap-1 '>
-                                    <input 
-                                        value={chargeNames[chargeName] ?? chargeName}  
-                                        className='w-fit' 
-                                        onChange={(e) => handleChargeNameTyping(chargeName, e.target.value)} 
-                                        onBlur={(e) => handleChargeNameChange(chargeName, e.target.value)}/>
-                                    
-                                    <input 
-                                        value={amount} 
-                                        onChange={(e) => handleChargeAmountChange(chargeName, e.target.value)} />
-                                </div>
-                        )) }
-                        </div>
-                    </div>
-                    </>
+                    <AdditionalCharges 
+                        bill = {bill}
+                        chargeNames = {chargeNames}
+                        onChange = {handleChargeNameTyping}
+                        onBlur = {handleChargeNameChange}
+                        onAmountChange = {handleChargeAmountChange}
+                    />
                 )}
 
 
