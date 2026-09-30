@@ -106,6 +106,7 @@ export const confirmBill = async (req, res) => {
         });
     }
     catch(err){
+        console.log("CONFIRM BILL ERROR:", err)
         return res.status(500).send({
             message: "Failed to create bill"
         });
