@@ -12,6 +12,7 @@ import GetStartedPage from '@/pages/GetStartedPage'
 import CaptureBill from '@/pages/CaptureBill'
 import ReviewBill from '@/pages/ReviewBill'
 import EditScannedBill from '@/pages/EditScannedBill'
+import SplitDetails from '@/pages/SplitDetails'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

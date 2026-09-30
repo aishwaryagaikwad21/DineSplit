@@ -10,6 +10,8 @@ import AdditionalCharges from '@/components/AIExtractedBill/AdditionalCharges'
 import AddNewChargeForm from '@/components/AIExtractedBill/AddNewChargeForm'
 import Discount from '@/components/AIExtractedBill/Discount'
 
+import { confirmBillService } from '@/services/confirmBill'
+
 const EditScannedBill = () => {
 
     const location = useLocation()
@@ -262,6 +264,36 @@ const EditScannedBill = () => {
     })
 }
 
+    const sanitizeChargeName = (name) => {
+        return name
+            .replace(/\s*@?\s*\d+(?:\.\d+)?%/g, "")
+            .trim()
+    }   
+
+    const handleConfirmBill = async () => {
+    try {
+        const sanitizedCharges = Object.fromEntries(
+            Object.entries(bill.additionalCharges).map(
+                ([name, amount]) => [
+                    sanitizeChargeName(name),
+                    amount
+                ]
+            )
+        )
+
+        const billToSend = {
+            ...bill,
+            additionalCharges: sanitizedCharges
+        }
+
+        const data = await confirmBillService(billToSend)
+
+        console.log(data)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
     return (
         
         <>
@@ -339,7 +371,7 @@ const EditScannedBill = () => {
             </div>
 
             <div className='flex justify-center'>
-               <button className="cursor-pointer w-1/2 rounded-xl bg-amber-400 px-6 py-2 my-6 font-semibold text-zinc-900 hover:bg-amber-500">CONFIRM BILL</button>
+               <button type="button" onClick={handleConfirmBill} className="cursor-pointer w-1/2 rounded-xl bg-amber-400 px-6 py-2 my-6 font-semibold text-zinc-900 hover:bg-amber-500">CONFIRM BILL</button>
             </div>
            </form>
         </div>
