@@ -268,7 +268,6 @@ const EditScannedBill = () => {
         
         <div className='flex justify-center max-md:flex-col max-md:align-middle'>
            <form>
-           <h3 className='font-semibold text-2xl mt-2'>Dishes</h3>
             <BillDishes
                 dishes={bill.dishes}
                 onDishChange={handleDishChange}
