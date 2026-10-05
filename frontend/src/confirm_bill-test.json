@@ -1,0 +1,64 @@
+{
+  "message": "Bill confirmed successfully",
+  "bill": {
+    "dishes": [
+      {
+        "dishName": "Cold Coffee",
+        "price": 427,
+        "quantity": 2,
+        "itemTotal": 854,
+        "_id": "6aa43d08073cb52486369713"
+      },
+      {
+        "dishName": "Cold Coffee",
+        "price": 280,
+        "quantity": 2,
+        "itemTotal": 560,
+        "_id": "6aa43d08073cb52486369714"
+      },
+      {
+        "dishName": "Veg Biryani",
+        "price": 320,
+        "quantity": 2,
+        "itemTotal": 640,
+        "_id": "6aa43d08073cb52486369715"
+      },
+      {
+        "dishName": "Masala Dosa",
+        "price": 338,
+        "quantity": 2,
+        "itemTotal": 676,
+        "_id": "6aa43d08073cb52486369716"
+      },
+      {
+        "dishName": "Hakka Noodles",
+        "price": 336,
+        "quantity": 2,
+        "itemTotal": 672,
+        "_id": "6aa43d08073cb52486369717"
+      },
+      {
+        "dishName": "Hakka Noodles",
+        "price": 336,
+        "quantity": 3,
+        "itemTotal": 1008,
+        "_id": "6aa43d08073cb52486369718"
+      }
+    ],
+    "additionalCharges": {
+      "CGST": 0,
+      "SGST": 0
+    },
+    "additionalChargesTotal": 0,
+    "discount": {
+      "percent": "0%",
+      "amount": 0
+    },
+    "_id": "6aa43d08073cb52486369712",
+    "subtotal": 4410,
+    "grandTotal": 4410,
+    "createdAt": "2026-09-11T17:40:24.797Z",
+    "updatedAt": "2026-09-11T17:40:24.797Z",
+    "__v": 0
+  }
+}
