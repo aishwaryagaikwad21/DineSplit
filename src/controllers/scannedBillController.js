@@ -1,5 +1,7 @@
 import { ScannedBill } from "../models/scanbill.js";
 import { ScannedSplit } from "../models/scannedsplit.js";
+import BillCode from "../models/billCode.js";
+import { generateShortBillCode } from "../services/generateShortCode.js";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractDishDetails } from "../services/aiService.js";
 import { extractedBill, updateBillSchema } from "../validators/scannedBillValidator.js";
@@ -100,9 +102,17 @@ export const confirmBill = async (req, res) => {
 
         await billDetails.save();
 
+        const billCode = await generateShortBillCode()
+
+        await BillCode.create({
+            billCode,
+            billId: billDetails._id
+        })
+
         return res.status(201).send({
             message: "Bill confirmed successfully",
-            bill: billDetails
+            bill: billDetails,
+            billCode
         });
     }
     catch(err){

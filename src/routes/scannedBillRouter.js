@@ -7,7 +7,7 @@ import { scanBill, confirmBill, getBill, updateBill, splitDetails, updateSplitDe
 const router = express.Router()
 
 router.post('/scan',image.single("billImage"),scanBill)
-router.post('/confirm-bill', confirmBill)
+router.post('/confirm-bill', confirmBill) 
 router.get('/scanned-bill/:id', getBill)
 router.put('/update-scanned-bill/:id', updateBill)
 router.post('/split-details/:id', splitDetails)
