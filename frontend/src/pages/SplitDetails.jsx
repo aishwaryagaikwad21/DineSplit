@@ -168,7 +168,7 @@ const SplitDetails = () => {
             setError("")
 
             const response = await fetch(
-                "http://localhost:5000/split-details",
+                `http://localhost:5000/split-details/${bill._id}`,
                 {
                     method: "POST",
                     headers: {
@@ -277,7 +277,7 @@ const SplitDetails = () => {
                                     onChange={e =>
                                         setMemberNameInput(e.target.value)
                                     }
-                                    placeholder="Enter name (e.g. Aishwarya)"
+                                    placeholder="Enter name (e.g. Alex)"
                                     className="min-w-0 flex-1 rounded-xl border border-[#F3E8D0] bg-white px-4 py-3 text-sm outline-none focus:border-amber-500"
                                 />
 
