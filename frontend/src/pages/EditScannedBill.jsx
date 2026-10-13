@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 //import billData from '../sampleData-1.json'
 import { Button } from '@base-ui/react/button'
 
@@ -16,6 +17,8 @@ const EditScannedBill = () => {
 
     const location = useLocation()
     const billData = location.state?.billData
+
+    const navigate = useNavigate()
 
     const [bill, setBill] = useState(billData)
     const [chargeNames, setChargeNames] = useState({})
@@ -271,28 +274,31 @@ const EditScannedBill = () => {
     }   
 
     const handleConfirmBill = async () => {
-    try {
-        const sanitizedCharges = Object.fromEntries(
-            Object.entries(bill.additionalCharges).map(
-                ([name, amount]) => [
-                    sanitizeChargeName(name),
-                    amount
-                ]
+        try {
+            const sanitizedCharges = Object.fromEntries(
+                Object.entries(bill.additionalCharges).map(
+                    ([name, amount]) => [
+                        sanitizeChargeName(name),
+                        amount
+                    ]
+                )
             )
-        )
 
-        const billToSend = {
-            ...bill,
-            additionalCharges: sanitizedCharges
+            const billToSend = {
+                ...bill,
+                additionalCharges: sanitizedCharges
+            }
+
+            const data = await confirmBillService(billToSend)
+
+            navigate('/split-details', {
+                state: { confirmBill: data }
+            })
+
+        } catch (error) {
+            console.error(error)
         }
-
-        const data = await confirmBillService(billToSend)
-
-        console.log(data)
-    } catch (error) {
-        console.error(error)
     }
-}
 
     return (
         

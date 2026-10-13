@@ -12,7 +12,7 @@ import GetStartedPage from '@/pages/GetStartedPage'
 import CaptureBill from '@/pages/CaptureBill'
 import ReviewBill from '@/pages/ReviewBill'
 import EditScannedBill from '@/pages/EditScannedBill'
-// import SplitDetails from '@/pages/SplitDetails'
+import SplitDetails from '@/pages/SplitDetails'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +22,7 @@ const router = createBrowserRouter(
       <Route path='capture-bill' element={<CaptureBill />}/>
       <Route path='/bill/review' element={<ReviewBill />} />
       <Route path='/edit-scan' element={<EditScannedBill />} />
+      <Route path='/split-details' element={<SplitDetails />} />
       <Route path='*' element={<Error />} />
     </Route>
   )
