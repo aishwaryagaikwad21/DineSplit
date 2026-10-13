@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="370" viewBox="0 0 520 370" fill="none">
+  <title>DineSplit plate, fork and knife illustration</title>
+  <desc>A warm cream organic shape behind a dark amber outlined plate, fork, knife and golden accent marks.</desc>
+
+  <!-- Soft cream backdrop shape -->
+  <path
+    d="M52 202
+       C30 183 43 157 67 143
+       C91 128 112 113 133 83
+       C159 47 202 28 244 40
+       C281 51 296 79 310 105
+       C326 136 344 146 376 145
+       C414 145 448 168 450 203
+       C452 239 418 258 385 264
+       C346 272 322 296 282 300
+       C241 304 212 286 177 291
+       C140 297 112 318 79 305
+       C44 291 24 263 33 236
+       C37 222 43 211 52 202Z"
+    fill="#FFF0C7"
+  />
+
+  <!-- Decorative golden rays -->
+  <g stroke="#FBBF24" stroke-width="7" stroke-linecap="round">
+    <path d="M424 42 L428 20"/>
+    <path d="M445 55 L460 40"/>
+    <path d="M450 76 L471 70"/>
+  </g>
+
+  <!-- Plate -->
+  <g stroke="#A05703" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="250" cy="191" r="91"/>
+    <circle cx="250" cy="191" r="70"/>
+  </g>
+
+  <!-- Fork -->
+  <g stroke="#A05703" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M88 76 V111"/>
+    <path d="M101 76 V111"/>
+    <path d="M114 76 V111"/>
+    <path d="M127 76 V111"/>
+    <path d="M88 111
+             C88 128 97 139 108 144
+             L108 289
+             C108 300 114 307 121 307
+             C128 307 134 300 134 289
+             L134 144
+             C145 139 154 128 154 111"/>
+    <path d="M88 76 V109"/>
+    <path d="M154 76 V109"/>
+  </g>
+
+  <!-- Knife -->
+  <g stroke="#A05703" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M385 75
+             C379 92 375 113 372 135
+             L359 213
+             C356 232 364 247 378 254
+             L365 291
+             C362 301 366 308 373 309
+             C381 310 386 304 388 295
+             L411 101
+             C414 86 409 75 401 70
+             C395 66 389 68 385 75Z"/>
+    <path d="M378 254 L392 258"/>
+  </g>
+</svg>
