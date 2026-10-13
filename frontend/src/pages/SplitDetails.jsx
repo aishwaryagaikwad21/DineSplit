@@ -12,7 +12,7 @@ const SplitDetails = () => {
 
     const [bill, setBill] = useState(confirmedBill?.bill ?? null)
 
-    console.log(bill)
+    //console.log(bill)
 
     const [memNames, setMemNames] = useState([])
     const [memberNameInput, setMemberNameInput] = useState("")
@@ -194,6 +194,7 @@ const SplitDetails = () => {
             navigate("/split-result", {
               state: {
                 splitResult: data,
+                additionalChargesTotal: bill.additionalChargesTotal
               },
             });
 

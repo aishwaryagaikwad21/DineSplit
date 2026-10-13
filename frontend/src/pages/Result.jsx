@@ -6,6 +6,9 @@ export default function Result() {
   const navigate = useNavigate();
 
   const splitResult = location.state?.splitResult;
+  const additionalChargesTotal = location.state?.additionalChargesTotal ?? 0;
+  const totalMembers = splitResult?.totalMembers ?? 0;
+    const additionalChargesPerMember = totalMembers > 0 ? additionalChargesTotal / totalMembers : 0;
 
   // Handle missing router state, such as refreshing the page.
   if (!splitResult) {
@@ -81,6 +84,19 @@ export default function Result() {
       y = 20;
     }
 
+    y += 10;
+
+    doc.setFontSize(11);
+    doc.text("Additional charges share:", 20, y);
+    doc.text(
+    `Rs. ${additionalChargesPerMember.toFixed(2)}`,
+    190,
+    y,
+    { align: "right" }
+    );
+
+    y += 12;
+
     doc.setFontSize(14);
     doc.text(
       `Total amount owed: Rs. ${Number(member.amountOwed).toFixed(2)}`,
@@ -121,7 +137,10 @@ export default function Result() {
           <p className="mt-1 text-sm text-zinc-500">
             {members.length} members · {splitType} split
           </p>
+          
         </div>
+
+        
 
         <div className="mt-6 space-y-4">
           {members.map((member) => (
@@ -138,6 +157,11 @@ export default function Result() {
                   <p className="mt-1 text-sm text-zinc-500">
                     {member.items?.length ?? 0} listed items
                   </p>
+
+                  <p className="text-sm font-normal text-zinc-500">
+                    Additional charges share: ₹
+                    {additionalChargesPerMember.toFixed(2)}
+                </p>
 
                   <p className="mt-2 text-xl font-bold text-amber-600">
                     ₹{Number(member.amountOwed).toFixed(2)}
