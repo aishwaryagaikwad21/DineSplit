@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 import Hero from '@/components/Split-Details/Hero'
@@ -118,6 +119,9 @@ const SplitDetails = () => {
         return dish?.who_ordered.includes(memberName) ?? false
     }
 
+    //initialise navigate
+    const navigate = useNavigate()
+
     // Submit the split configuration
     const handleCalculateSplit = async (e) => {
         e.preventDefault()
@@ -186,7 +190,12 @@ const SplitDetails = () => {
                 )
             }
 
-            console.log("Split response:", data)
+            //console.log("Split response:", data)
+            navigate("/split-result", {
+              state: {
+                splitResult: data,
+              },
+            });
 
             // Replace this with your actual result route
             // once the backend response and result page are ready.
