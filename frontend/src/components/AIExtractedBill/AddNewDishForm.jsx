@@ -16,7 +16,7 @@ const AddNewDishForm = ({
                         <X className='cursor-pointer' onClick={onCancel} />
                     </h2>
 
-                    <div className="grid gap-4 md:grid-cols-3">
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
 
                         {/* Dish Name */}
                         <div className="flex flex-col gap-1">
