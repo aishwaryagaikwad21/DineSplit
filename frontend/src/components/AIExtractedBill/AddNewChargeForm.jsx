@@ -36,6 +36,8 @@ const AddNewChargeForm = ({
                                             }
                                             placeholder="e.g. Service Charge"
                                             required
+                                            className="rounded-lg border px-3 py-2 outline-none focus:border-amber-400"
+
                                         />
     
                                     </div>
@@ -58,6 +60,7 @@ const AddNewChargeForm = ({
                                                     e.target.value
                                                 )
                                             }
+                                            className="rounded-lg border px-3 py-2 outline-none focus:border-amber-400"
                                             placeholder="e.g. 50"
                                             required
                                         />
