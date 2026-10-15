@@ -17,6 +17,7 @@ import Result from '@/pages/Result'
 import ManualBill from '@/pages/ManualBill'
 import Features from '@/pages/Features'
 import About from '@/pages/AboutUs'
+import HowItWorks from '@/pages/HowItWorks'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path='/manual-bill' element={<ManualBill />} />
       <Route path='/features' element={<Features />} />
       <Route path='/about-us' element={<About />} />
+      <Route path='/working' element={<HowItWorks />} />
       <Route path='*' element={<Error />} />
     </Route>
   )
