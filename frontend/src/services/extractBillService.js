@@ -14,3 +14,4 @@ export const extractBillService = async (formData) => {
     //console.log("Bill data:", data)
     return data
 }
+//'http://IP_address/scan'
