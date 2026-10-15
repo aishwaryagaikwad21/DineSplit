@@ -14,6 +14,7 @@ import ReviewBill from '@/pages/ReviewBill'
 import EditScannedBill from '@/pages/EditScannedBill'
 import SplitDetails from '@/pages/SplitDetails'
 import Result from '@/pages/Result'
+import ManualBill from '@/pages/ManualBill'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='/edit-scan' element={<EditScannedBill />} />
       <Route path='/split-details' element={<SplitDetails />} />
       <Route path='/split-result' element={<Result />}/>
+      <Route path='/manual-bill' element={<ManualBill />} />
       <Route path='*' element={<Error />} />
     </Route>
   )

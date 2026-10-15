@@ -1,5 +1,7 @@
 import React from 'react'
 import { ArrowRight, Camera, QrCode } from 'lucide-react'
+import { ClipboardList } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 import {
@@ -13,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button'
 
 const GetStarted = () => {
+  const navigate = useNavigate();
   return (
     <main className="min-h-[calc(100vh-65px)] bg-[#fffbf2] px-6 py-12 md:py-20">
 
@@ -77,40 +80,34 @@ const GetStarted = () => {
           </Card>
 
 
-          {/* QR Code */}
+          {/* Manual Bill Entry */}
           <Card className="border-amber-100 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
-
             <CardHeader className="items-center text-center">
-
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-                <QrCode className="h-8 w-8 text-amber-600" />
+                <ClipboardList className="h-8 w-8 text-amber-600" />
               </div>
 
               <CardTitle className="text-2xl text-zinc-900">
-                Scan a QR code
+                Enter bill manually
               </CardTitle>
 
               <CardDescription className="max-w-sm text-base leading-relaxed text-zinc-600">
-                At participating restaurants, scan the QR code to get
-                your bill instantly.
+                Lost your bill or having trouble scanning it? Enter the
+                dishes, prices, and quantities yourself to split the bill.
               </CardDescription>
-
             </CardHeader>
 
             <CardContent className="flex justify-center pb-8">
-
               <Button
                 variant="outline"
                 className="border-amber-400 px-6 text-zinc-900 hover:bg-amber-50"
+                onClick={() => navigate("/manual-bill")}
               >
-                Scan QR Code
+                Enter Bill Details
                 <ArrowRight />
               </Button>
-
             </CardContent>
-
           </Card>
-
         </div>
 
 
