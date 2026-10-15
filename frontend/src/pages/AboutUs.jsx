@@ -43,7 +43,7 @@ const About = () => {
             <Heart className="size-7 text-[#b86600]" />
           </div>
 
-          <p className="mb-4 text-sm font-semibold tracking-widest text-[#b86600]">
+          <p className="mb-4 text-sm font-semibold tracking-widest text-amber-500">
             A LITTLE ABOUT US
           </p>
 

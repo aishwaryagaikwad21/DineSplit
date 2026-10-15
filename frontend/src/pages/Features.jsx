@@ -49,7 +49,7 @@ const Features = () => {
       {/* Hero */}
       <section className="px-6 py-14 text-center md:py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-4 text-sm font-semibold tracking-widest text-orange-600">
+          <p className="mb-4 text-sm font-semibold tracking-widest text-amber-500">
             WHAT DINESPLIT CAN DO
           </p>
 
@@ -82,8 +82,8 @@ const Features = () => {
                 key={feature.title}
                 className="rounded-2xl border border-[#eadfc9] bg-white p-5"
               >
-                <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-[#fff2c7]">
-                  <Icon className="size-6 text-orange-600" />
+                <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
+                  <Icon className="size-6 text-[#b86600]" />
                 </div>
 
                 <h2 className="text-lg font-semibold">{feature.title}</h2>
@@ -101,7 +101,7 @@ const Features = () => {
       <section className="border-y border-amber-100 bg-white px-6 py-14 md:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-9 text-center">
-            <p className="text-sm font-semibold tracking-widest text-orange-600">
+            <p className="text-sm font-semibold tracking-widest text-amber-500">
               STEP 01
             </p>
 
@@ -117,8 +117,8 @@ const Features = () => {
           <div className="grid gap-5 md:grid-cols-2">
             {/* Upload and scan */}
             <article className="rounded-2xl border border-[#e4d9c5] bg-[#fffbf2] p-6 sm:p-8">
-              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fff2c7]">
-                <Camera className="size-6 text-orange-600" />
+              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <Camera className="size-6 text-[#b86600]" />
               </div>
 
               <h3 className="text-xl font-semibold">
@@ -147,8 +147,8 @@ const Features = () => {
 
             {/* Manual entry */}
             <article className="rounded-2xl border border-[#e4d9c5] bg-[#fffbf2] p-6 sm:p-8">
-              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fff2c7]">
-                <ClipboardList className="size-6 text-orange-600" />
+              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <ClipboardList className="size-6 text-[#b86600]" />
               </div>
 
               <h3 className="text-xl font-semibold">
@@ -181,7 +181,7 @@ const Features = () => {
       <section className="px-6 py-14 md:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-9 text-center">
-            <p className="text-sm font-semibold tracking-widest text-orange-600">
+            <p className="text-sm font-semibold tracking-widest text-amber-500">
               STEP 02
             </p>
 
@@ -197,8 +197,8 @@ const Features = () => {
           <div className="grid gap-5 md:grid-cols-2">
             {/* Equal split */}
             <article className="rounded-2xl border border-[#e4d9c5] bg-white p-6 sm:p-8">
-              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fff2c7]">
-                <Users className="size-6 text-orange-600" />
+              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <Users className="size-6 text-[#b86600]" />
               </div>
 
               <h3 className="text-xl font-semibold">Split equally</h3>
@@ -218,7 +218,7 @@ const Features = () => {
                   <span className="text-sm text-zinc-600">
                     4 members
                   </span>
-                  <span className="font-semibold text-orange-600">
+                  <span className="font-semibold text-amber-500">
                     ₹250 each
                   </span>
                 </div>
@@ -227,8 +227,8 @@ const Features = () => {
 
             {/* Item-wise split */}
             <article className="rounded-2xl border border-[#e4d9c5] bg-white p-6 sm:p-8">
-              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fff2c7]">
-                <ReceiptText className="size-6 text-orange-600" />
+              <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <ReceiptText className="size-6 text-[#b86600]" />
               </div>
 
               <h3 className="text-xl font-semibold">Split item-wise</h3>
@@ -271,7 +271,7 @@ const Features = () => {
       <section className="border-y border-amber-100 bg-white px-6 py-14 md:py-16">
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold tracking-widest text-orange-600">
+            <p className="text-sm font-semibold tracking-widest text-amber-500">
               STEP 03
             </p>
 
@@ -292,7 +292,7 @@ const Features = () => {
                 "Downloadable PDF bill summary",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="size-5 shrink-0 text-amber-600" />
+                  <CheckCircle2 className="size-5 shrink-0 text-amber-500" />
                   <span className="text-sm text-zinc-700">{item}</span>
                 </div>
               ))}
@@ -332,7 +332,7 @@ const Features = () => {
                   </div>
 
                   <div className="text-right">
-                    <p className="font-bold text-orange-600">{amount}</p>
+                    <p className="font-bold text-amber-500">{amount}</p>
                     <p className="mt-1 flex items-center justify-end gap-1 text-xs text-zinc-500">
                       <FileDown className="size-3" />
                       PDF available
