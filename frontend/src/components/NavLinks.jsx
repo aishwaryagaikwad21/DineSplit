@@ -25,12 +25,12 @@ const location = useLocation() //gives you information about the current URL.
             How It Works
           </a>
 
-          <a
-            href="#about"
+          <Link
+            to="/about-us"
             className="nav-link"
           >
             About
-          </a>
+          </Link>
     </>
   )
 }
