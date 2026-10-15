@@ -9,9 +9,11 @@ import billCodeRouter from './routes/billCodeRouter.js'
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+  origin: [
+    'http://localhost:5173',
+    'http://192.168.29.182:5173'
+  ]
 }))
-
 app.use(express.json())
 
 app.use(restaurantRouter)
