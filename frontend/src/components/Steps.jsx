@@ -16,7 +16,7 @@ const Steps = () => {
                         </div>
                     </div>
                     <p className='font-semibold'>Add the bill</p>
-                    <p className="max-w-xs text-center text-zinc-600">Scan the bill if the restaurant isn't found, or scan the QR code to get the bill.</p>
+                    <p className="max-w-xs text-center text-zinc-600">Scan the bill and AI extracts the bill details, or enter bill details yourself.</p>
                 </div>
 
                 <div className='flex flex-col items-center'>
