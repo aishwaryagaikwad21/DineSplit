@@ -11,12 +11,12 @@ const location = useLocation() //gives you information about the current URL.
               Home
             </Link>
           )}
-          <a
-            href="#features"
+          <Link
+            to="/features"
             className="nav-link"
           >
             Features
-          </a>
+          </Link>
 
           <a
             href="#how-it-works"
