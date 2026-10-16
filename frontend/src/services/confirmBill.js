@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const confirmBillService = async (bill) => {
     const response = await fetch(
-        "http://localhost:5000/confirm-bill",
+        `${API_URL}/confirm-bill`,
         {
             method: "POST",
             headers: {

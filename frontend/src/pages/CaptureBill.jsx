@@ -18,7 +18,7 @@ const CaptureBill = () => {
                   audio: false,
                 })
 
-      console.log('Camera stream:', stream)
+      //console.log('Camera stream:', stream)
       streamRef.current = stream
 
       if (videoRef.current) {
@@ -27,16 +27,16 @@ const CaptureBill = () => {
           videoRef.current.play()
         }
 
-        console.log('Video element:', videoRef.current)
-        console.log('Video readyState:', videoRef.current.readyState)
+        //console.log('Video element:', videoRef.current)
+        //console.log('Video readyState:', videoRef.current.readyState)
       }
 
       setCameraOpen(true)
     } catch (error) {
-      console.error('Unable to access camera:', error)
-      console.error('Camera error:', error.name)
-      console.error('Message:', error.message)
-      console.error('Full error:', error)
+      //console.error('Unable to access camera:', error)
+      //console.error('Camera error:', error.name)
+      //console.error('Message:', error.message)
+      //console.error('Full error:', error)
     }
   }
 

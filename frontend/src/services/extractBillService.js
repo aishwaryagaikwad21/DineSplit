@@ -1,6 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const extractBillService = async (formData) => {
     const response = await fetch(
-        'http://localhost:5000/scan',
+        `${API_URL}/scan`,
         {
             method: 'POST',
             body: formData,

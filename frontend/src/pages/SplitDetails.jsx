@@ -166,12 +166,13 @@ const SplitDetails = () => {
             })
         }
 
+        const API_URL = import.meta.env.VITE_API_URL;
         try {
             setLoading(true)
             setError("")
 
             const response = await fetch(
-                `http://localhost:5000/split-details/${bill._id}`,
+                `${API_URL}/split-details/${bill._id}`,
                 {
                     method: "POST",
                     headers: {
