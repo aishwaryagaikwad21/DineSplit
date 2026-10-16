@@ -45,7 +45,7 @@ const Hero = () => {
             </div>
 
             {/* Right side image */}
-            <div className='hidden sm:block sm:w-1/2'>
+            <div className='hidden md:block md:w-1/2'>
                 <img src="/images/hero.png" alt="Good food tastes better together"  className="w-full" />
             </div>
 
