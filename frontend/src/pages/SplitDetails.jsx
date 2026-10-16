@@ -295,7 +295,7 @@ const SplitDetails = () => {
                                     type="button"
                                     onClick={handleAddMember}
                                     disabled={!memberNameInput.trim()}
-                                    className="shrink-0 rounded-xl bg-amber-400 px-4 py-3 font-semibold text-zinc-900 transition hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="cursor-pointer shrink-0 rounded-xl bg-amber-400 px-4 py-3 font-semibold text-zinc-900 transition hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     + Add
                                 </button>
@@ -334,7 +334,7 @@ const SplitDetails = () => {
                                                 handleRemoveMember(name)
                                             }
                                             aria-label={`Remove ${name}`}
-                                            className="shrink-0 text-lg text-zinc-500 hover:text-red-600"
+                                            className="cursor-pointer shrink-0 text-lg text-zinc-500 hover:text-red-600"
                                         >
                                             ×
                                         </button>
@@ -370,7 +370,7 @@ const SplitDetails = () => {
                                 handleSplitTypeChange("equal")
                             }
                             aria-pressed={splitType === "equal"}
-                            className={`flex items-center justify-between gap-4 rounded-xl border p-4 text-left transition ${
+                            className={`cursor-pointer flex items-center justify-between gap-4 rounded-xl border p-4 text-left transition ${
                                 splitType === "equal"
                                     ? "border-amber-500 bg-[#FFF7E6]"
                                     : "border-[#F3E8D0] hover:border-amber-300"
@@ -404,7 +404,7 @@ const SplitDetails = () => {
                                 handleSplitTypeChange("item-wise")
                             }
                             aria-pressed={splitType === "item-wise"}
-                            className={`flex items-center justify-between gap-4 rounded-xl border p-4 text-left transition ${
+                            className={`cursor-pointer flex items-center justify-between gap-4 rounded-xl border p-4 text-left transition ${
                                 splitType === "item-wise"
                                     ? "border-amber-500 bg-[#FFF7E6]"
                                     : "border-[#F3E8D0] hover:border-amber-300"
@@ -548,7 +548,7 @@ const SplitDetails = () => {
                     <button
                         type="button"
                         onClick={() => navigate(-1)}
-                        className="rounded-full border border-amber-400 px-6 py-3 font-semibold text-zinc-900 transition hover:bg-[#FFF7E6]"
+                        className="cursor-pointer rounded-full border border-amber-400 px-6 py-3 font-semibold text-zinc-900 transition hover:bg-[#FFF7E6]"
                     >
                         ← Back
                     </button>
@@ -556,7 +556,7 @@ const SplitDetails = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="rounded-full bg-amber-400 px-6 py-3 font-semibold text-zinc-900 transition hover:bg-amber-500 disabled:cursor-wait disabled:opacity-60"
+                        className="cursor-pointer rounded-full bg-amber-400 px-6 py-3 font-semibold text-zinc-900 transition hover:bg-amber-500 disabled:cursor-wait disabled:opacity-60"
                     >
                         {loading ? "Calculating..." : "Calculate Split →"}
                     </button>

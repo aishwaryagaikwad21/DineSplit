@@ -100,7 +100,7 @@ const GetStarted = () => {
             <CardContent className="flex justify-center pb-8">
               <Button
                 variant="outline"
-                className="border-amber-400 px-6 text-zinc-900 hover:bg-amber-50"
+                className="cursor-pointer border-amber-400 px-6 text-zinc-900 hover:bg-amber-50"
                 onClick={() => navigate("/manual-bill")}
               >
                 Enter Bill Details

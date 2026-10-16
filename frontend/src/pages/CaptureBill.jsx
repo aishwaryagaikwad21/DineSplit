@@ -176,14 +176,14 @@ const CaptureBill = () => {
             <div className="flex justify-center gap-4 p-4">
               <button
                 onClick={capturePhoto}
-                className="rounded-full bg-amber-400 px-6 py-3 font-medium text-zinc-900 transition-colors hover:bg-amber-500"
+                className="cursor-pointer rounded-full bg-amber-400 px-6 py-3 font-medium text-zinc-900 transition-colors hover:bg-amber-500"
               >
                 Capture
               </button>
 
               <button
                 onClick={stopCamera}
-                className="rounded-full border border-zinc-300 bg-white px-6 py-3 font-medium text-zinc-800 hover:bg-zinc-50"
+                className="cursor-pointer rounded-full border border-zinc-300 bg-white px-6 py-3 font-medium text-zinc-800 hover:bg-zinc-50"
               >
                 Cancel
               </button>
@@ -207,7 +207,7 @@ const CaptureBill = () => {
 
               <button
                 onClick={() => setPhoto(null)}
-                className="absolute right-4 top-4 rounded-full bg-white p-2 shadow-md hover:bg-zinc-100"
+                className="cursor-pointer absolute right-4 top-4 rounded-full bg-white p-2 shadow-md hover:bg-zinc-100"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -218,7 +218,7 @@ const CaptureBill = () => {
 
               <button
                 onClick={startCamera}
-                className="flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-amber-50"
+                className="cursor-pointer flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-amber-50"
               >
                 <RotateCcw className="h-4 w-4" />
                 Retake
@@ -226,7 +226,7 @@ const CaptureBill = () => {
 
               <button
                 onClick={() => fileInputRef.current.click()}
-                className="flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-amber-50"
+                className="cursor-pointer flex items-center gap-2 rounded-lg border border-amber-300 px-4 py-2 text-sm font-medium text-zinc-800 hover:bg-amber-50"
               >
                 <Image className="h-4 w-4" />
                 Choose another
@@ -246,7 +246,7 @@ const CaptureBill = () => {
 
             <button
               onClick={startCamera}
-              className="flex flex-col items-center rounded-2xl border border-amber-100 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="cursor-pointer flex flex-col items-center rounded-2xl border border-amber-100 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
                 <Camera className="h-8 w-8 text-amber-600" />
@@ -265,7 +265,7 @@ const CaptureBill = () => {
 
             <button
               onClick={() => fileInputRef.current.click()}
-              className="flex flex-col items-center rounded-2xl border border-amber-100 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+              className="cursor-pointer flex flex-col items-center rounded-2xl border border-amber-100 bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
               <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
                 <Image className="h-8 w-8 text-amber-600" />

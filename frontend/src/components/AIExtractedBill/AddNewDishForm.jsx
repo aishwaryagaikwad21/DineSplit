@@ -11,7 +11,7 @@ const AddNewDishForm = ({
   return (
         <div className="mx-auto my-5 max-w-4xl rounded-xl border p-5">
 
-                    <h2 className="flex justify-between mb-5 text-xl font-semibold">
+                    <h2 className=" flex justify-between mb-5 text-xl font-semibold">
                         Add Dish 
                         <X className='cursor-pointer' onClick={onCancel} />
                     </h2>

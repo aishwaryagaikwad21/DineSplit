@@ -385,7 +385,7 @@ const ManualBill = () => {
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="mb-6 flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900"
+          className="cursor-pointer mb-6 flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900"
         >
           <ArrowLeft size={18} />
           Back
@@ -393,7 +393,7 @@ const ManualBill = () => {
 
         <header className="mb-8">
           <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-            <ReceiptText className="h-6 w-6 text-amber-600" />
+            <ReceiptText className="h-6 w-6 text-[#b86600]" />
           </div>
 
           <p className="text-sm font-semibold uppercase tracking-wider text-amber-600">
@@ -430,7 +430,7 @@ const ManualBill = () => {
               <Button
                 type="button"
                 onClick={() => setShowDishForm((prev) => !prev)}
-                className="rounded-xl bg-amber-400 px-6 py-3 font-semibold text-zinc-900 hover:bg-amber-500"
+                className="cursor-pointer rounded-xl bg-amber-400 px-6 py-3 font-semibold text-zinc-900 hover:bg-amber-500"
               >
                 <div className="flex gap-1 items-center justify-center">
                     Add Dish
@@ -472,7 +472,7 @@ const ManualBill = () => {
               <Button
                 type="button"
                 onClick={() => setShowChargeForm((prev) => !prev)}
-                className="rounded-xl bg-amber-400 px-6 py-3 font-semibold text-zinc-900 hover:bg-amber-500"
+                className="cursor-pointer rounded-xl bg-amber-400 px-6 py-3 font-semibold text-zinc-900 hover:bg-amber-500"
               >
                 <div className="flex gap-1 items-center justify-center">
                     Add Charge
@@ -514,7 +514,7 @@ const ManualBill = () => {
             type="button"
             onClick={handleConfirmBill}
             disabled={loading}
-            className="h-12 w-full rounded-xl bg-amber-400 font-semibold text-zinc-900 hover:bg-amber-500"
+            className="cursor-pointer h-12 w-full rounded-xl bg-amber-400 font-semibold text-zinc-900 hover:bg-amber-500"
           >
             {loading ? "Confirming bill..." : "Confirm Bill"}
           </Button>
