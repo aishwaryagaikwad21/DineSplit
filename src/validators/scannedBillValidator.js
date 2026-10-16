@@ -1,23 +1,26 @@
-//to validate Gemini's output
+
 import { z } from "zod";
 
+// Validate and normalize Gemini's output
 const extractedDishSchema = z.object({
     dishName: z.string(),
-    price: z.number(),
-    quantity: z.number(),
-    itemTotal: z.number()
+    price: z.coerce.number().nonnegative(),
+    quantity: z.coerce.number().positive(),
+    itemTotal: z.coerce.number().nonnegative()
 });
 
 export const extractedBill = z.object({
     dishes: z.array(extractedDishSchema),
-    subtotal: z.number().positive(),
-    additionalCharges: z.record(z.string(), z.number().nonnegative()).default({}),
+    subtotal: z.coerce.number().nonnegative(),
+    additionalCharges: z.record(
+        z.string(),
+        z.coerce.number().nonnegative()
+    ).default({}),
     discount: z.object({
         percent: z.string(),
-        amount: z.number().nonnegative()
+        amount: z.coerce.number().nonnegative()
     }),
-    grandTotal: z.number().positive()
-})
+    grandTotal: z.coerce.number().nonnegative()
+});
 
 export const updateBillSchema = extractedBill.partial();
-
