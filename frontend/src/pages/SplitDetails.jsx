@@ -11,8 +11,7 @@ const SplitDetails = () => {
     const confirmedBill = location.state?.confirmBill
 
     const [bill, setBill] = useState(confirmedBill?.bill ?? null)
-
-    //console.log(bill)
+    const [billCode, setBillCode] = useState(confirmedBill?.billCode ?? "");
 
     const [memNames, setMemNames] = useState([])
     const [memberNameInput, setMemberNameInput] = useState("")
@@ -226,6 +225,18 @@ const SplitDetails = () => {
       <>
       <div className="bg-[#FFFBF2] px-6 py-3 sm:px-4 lg:py-5">
         <Hero />
+
+        {billCode && (
+            <>
+            <div className='p-5'>
+                <p className="text-2xl text-600 text-center ">
+                    Bill Code: <span className="font-semibold">{billCode}</span>
+                </p>
+                <p className='text-sm text-amber-500 text-center '>Store it for future reference</p>
+            </div>
+            </>
+        
+        )}
 
         <form
                 onSubmit={handleCalculateSplit}
