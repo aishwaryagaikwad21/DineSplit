@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ScanText,
   ClipboardList,
@@ -191,7 +192,9 @@ const HowItWorks = () => {
 
           <p className="mt-5 flex items-center justify-center gap-2 text-sm text-zinc-500">
             Ready when you are
+            <Link to='/get-started'>
             <ArrowRight className="size-4 text-[#b86600]" />
+            </Link>
           </p>
         </div>
       </section>

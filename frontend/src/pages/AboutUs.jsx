@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import GetStartedButton from "../components/GetStartedButton";
+import { Link } from "react-router-dom";
 
 const values = [
   {
@@ -146,7 +147,7 @@ const About = () => {
                   className="rounded-2xl border border-[#eadfc9] bg-[#fffbf2] p-6"
                 >
                   <div className="mb-5 flex size-12 items-center justify-center rounded-full bg-[#fbf3e1]">
-                    <Icon className="size-6 text-[#b86600]" />
+                    <Icon className="size-6 text-[#b86600]" /> 
                   </div>
 
                   <h3 className="text-lg font-semibold">{value.title}</h3>
@@ -225,7 +226,9 @@ const About = () => {
 
           <p className="mt-5 flex items-center justify-center gap-2 text-sm text-zinc-500">
             Built for the moments around the table
-            <ArrowRight className="size-4 text-amber-500" />
+            <Link to='/get-started'>
+              <ArrowRight className="size-4 text-amber-500" />
+            </Link>
           </p>
         </div>
       </section>

@@ -48,8 +48,8 @@ const GetStarted = () => {
 
             <CardHeader className="items-center text-center">
 
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-                <Camera className="h-8 w-8 text-amber-600" />
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <Camera className="h-8 w-8 text-[#b86600]" />
               </div>
 
               <CardTitle className="text-2xl text-zinc-900">
@@ -83,8 +83,8 @@ const GetStarted = () => {
           {/* Manual Bill Entry */}
           <Card className="border-amber-100 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
             <CardHeader className="items-center text-center">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-                <ClipboardList className="h-8 w-8 text-amber-600" />
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#fbf3e1]">
+                <ClipboardList className="h-8 w-8 text-[#b86600]" />
               </div>
 
               <CardTitle className="text-2xl text-zinc-900">
